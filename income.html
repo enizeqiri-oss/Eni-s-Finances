@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/atelier.css">
 </head>
-<body>
+<body data-page="income">
 <div class="app">
 
 <aside class="sidebar">
@@ -37,12 +37,13 @@
   <div class="spacer"></div>
   <div class="side-card">
     <span class="label">Statement period</span>
-    <div class="v">May 2026</div>
+    <div class="v" data-month>—</div>
   </div>
   <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Reset all data</a>
   <div class="user">
-    <div class="avatar">LB</div>
-    <div><div class="who">Lena B&uuml;hlmann</div><div class="where">Kanton Z&uuml;rich</div></div>
+    <div class="avatar"><span data-bind="profile.firstName">L</span></div>
+    <div><div class="who"><span data-bind="profile.firstName">You</span></div><div class="where" data-bind="profile.kanton">Kanton</div></div>
   </div>
 </aside>
 
@@ -54,11 +55,10 @@
       <h1 class="display">Your <em>income</em>, in full sentences.</h1>
     </div>
     <div class="top-actions">
-      <span class="bank-status">
+      <span class="bank-status" data-show-if="employment.employer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
-        Connected to UBS &middot; employer recognised
+        Saved locally &middot; updates as you type
       </span>
-      <button class="btn-dark">Save</button>
     </div>
   </header>
 
@@ -70,26 +70,29 @@
         <div class="card-head" style="margin-bottom: 10px;">
           <div>
             <h2>Main employment</h2>
-            <div class="card-sub">Studio Schibler AG &middot; permanent</div>
+            <div class="card-sub">Your gross monthly salary</div>
           </div>
           <span class="pill paid">active</span>
         </div>
         <div class="fields">
           <div class="field">
             <span class="label">Brutto monthly</span>
-            <input value="9'200"><span class="suffix">CHF</span>
+            <input data-field="employment.bruttoMonthly" data-numeric="true" inputmode="decimal"><span class="suffix">CHF</span>
           </div>
           <div class="field">
             <span class="label">Employer</span>
-            <input value="Studio Schibler AG">
+            <input data-field="employment.employer">
           </div>
           <div class="field">
             <span class="label">Payday</span>
-            <input value="25th of month">
+            <input data-field="employment.payday" data-numeric="true" inputmode="numeric">
           </div>
           <div class="field">
             <span class="label">13. Monatslohn</span>
-            <input value="Yes &middot; pro-rata in December">
+            <select data-field="employment.thirteenth">
+              <option value="true">Yes &middot; pro-rata in December</option>
+              <option value="false">No</option>
+            </select>
           </div>
         </div>
       </div>
@@ -98,26 +101,25 @@
         <div class="card-head" style="margin-bottom: 10px;">
           <div>
             <h2>Side income</h2>
-            <div class="card-sub">Avg over last 6 months &middot; CHF 240/mo</div>
+            <div class="card-sub">Optional &middot; recurring side streams</div>
           </div>
-          <span class="link">+ add source</span>
         </div>
         <div class="fields" style="grid-template-columns: 1fr 1fr;">
           <div class="field">
-            <span class="label">Freelance consulting</span>
-            <input value="160"><span class="suffix">CHF / mo</span>
+            <span class="label">Freelance / consulting</span>
+            <input data-field="side.freelance" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
           <div class="field">
-            <span class="label">IBKR dividends</span>
-            <input value="80"><span class="suffix">CHF / mo</span>
+            <span class="label">Dividends</span>
+            <input data-field="side.dividends" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
           <div class="field">
             <span class="label">Rental income</span>
-            <input value="&mdash;"><span class="suffix">none</span>
+            <input data-field="side.rental" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
           <div class="field">
-            <span class="label">Cash gifts</span>
-            <input value="&mdash;"><span class="suffix">none</span>
+            <span class="label">Other</span>
+            <input data-field="side.other" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
         </div>
       </div>
@@ -126,25 +128,25 @@
         <div class="card-head" style="margin-bottom: 10px;">
           <div>
             <h2>Taxes &amp; retirement</h2>
-            <div class="card-sub">Kanton Z&uuml;rich &middot; tax year 2026</div>
+            <div class="card-sub"><span data-bind="profile.kanton">Kanton</span> &middot; tax year 2026</div>
           </div>
         </div>
         <div class="fields">
           <div class="field">
-            <span class="label">Kanton</span>
-            <input value="Z&uuml;rich">
+            <span class="label">AHV / IV / EO / ALV</span>
+            <input data-field="taxes.ahvRate" data-numeric="true" inputmode="decimal"><span class="suffix">%</span>
           </div>
           <div class="field">
             <span class="label">Effective tax rate</span>
-            <input value="14.2"><span class="suffix">%</span>
+            <input data-field="taxes.taxRate" data-numeric="true" inputmode="decimal"><span class="suffix">%</span>
           </div>
           <div class="field">
             <span class="label">S&auml;ule 3a</span>
-            <input value="583"><span class="suffix">CHF / mo &middot; VIAC</span>
+            <input data-field="taxes.saule3a" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
           <div class="field">
             <span class="label">BVG (pension)</span>
-            <input value="517"><span class="suffix">CHF / mo &middot; employer match</span>
+            <input data-field="taxes.bvg" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / mo</span>
           </div>
         </div>
       </div>
@@ -157,19 +159,25 @@
         <span class="label">Live net calculation</span>
         <div class="h">Brutto &rarr; Netto</div>
 
-        <div class="line"><span>Brutto monthly</span><span class="v">9&rsquo;200</span></div>
-        <div class="line sub"><span>&minus; Tax 14.2%</span><span class="v">&minus;1&rsquo;306</span></div>
-        <div class="line sub"><span>&minus; S&auml;ule 3a</span><span class="v">&minus;583</span></div>
-        <div class="line sub"><span>&minus; BVG</span><span class="v">&minus;517</span></div>
-        <div class="line add"><span>+ Side income</span><span class="v">+240</span></div>
-        <div class="line add"><span>+ Dividends</span><span class="v">+6</span></div>
+        <div class="line"><span>Brutto monthly</span><span class="v" data-calc="brutto">0</span></div>
+        <div class="line sub"><span>&minus; AHV / IV / EO / ALV <span data-calc="ahv-rate-pct" style="opacity:0.7;"></span></span><span class="v" data-calc="ahv">0</span></div>
+        <div class="line sub"><span>&minus; BVG</span><span class="v" data-calc="bvg">0</span></div>
+        <div class="line add"><span>+ Side income</span><span class="v" data-calc="side">0</span></div>
 
         <div class="line total">
-          <span>Netto monthly</span>
-          <span class="v">8&rsquo;040</span>
+          <span>Net monthly</span>
+          <span class="v" data-calc="net">0</span>
         </div>
         <div class="line" style="border-bottom:none; padding-top:14px; color:#BDB39C;">
-          <span>Annualised</span><span class="v" style="font-size:18px;">96&rsquo;480</span>
+          <span>Annualised</span><span class="v" style="font-size:18px;" data-calc="annual">0</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:6px; color:#BDB39C;">
+          <span>Tax to set aside &middot; <span data-calc="tax-rate-pct"></span></span>
+          <span class="v" style="font-size:18px;" data-calc="tax">0</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:6px; color:#BDB39C;">
+          <span>S&auml;ule 3a (separate)</span>
+          <span class="v" style="font-size:18px;" data-calc="3a">0</span>
         </div>
       </div>
 
@@ -179,7 +187,7 @@
         </div>
         <div>
           <h4>A gentle suggestion</h4>
-          <p>Adding <strong>CHF 119/mo</strong> to your 3a brings you to the 2026 maximum of <strong>CHF 7&rsquo;258</strong>. That&rsquo;s roughly <strong>CHF 203</strong> less tax in October &mdash; we can schedule it as a standing order.</p>
+          <p>The 2026 S&auml;ule 3a maximum if you&rsquo;re BVG-versichert is <strong>CHF 7&rsquo;258/year</strong>. Adjust your monthly contribution above; the dashboard updates instantly.</p>
         </div>
       </div>
 
@@ -188,8 +196,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4 10-10"/></svg>
         </div>
         <div>
-          <h4>Bank connection</h4>
-          <p>UBS recognises Studio Schibler AG as your employer. Salary postings auto-match on the 25th. Last sync 19 May, 18:42.</p>
+          <h4>Where this lives</h4>
+          <p>All edits are saved in your browser only. <a href="#" data-action="reset" style="color: var(--accent);">Reset all data</a> if you want to start over.</p>
         </div>
       </div>
     </div>
@@ -198,5 +206,8 @@
 
 </main>
 </div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>

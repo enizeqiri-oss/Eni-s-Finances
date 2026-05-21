@@ -201,7 +201,7 @@
   }
 </style>
 </head>
-<body>
+<body data-page="mobile">
 
 <a class="back-link" href="index.html">&larr; Back to Overview</a>
 
@@ -227,17 +227,17 @@
       </div>
 
       <div class="m-main">
-        <div class="m-greet">Tuesday evening</div>
+        <div class="m-greet" data-today>—</div>
         <div class="m-hi">
-          <div class="avatar">LB</div>
-          <h1>Good evening, <em>Lena</em></h1>
+          <div class="avatar"><span data-bind="profile.firstName">L</span></div>
+          <h1><span data-greeting>Good evening</span>, <em data-bind="profile.firstName">there</em></h1>
         </div>
 
         <div class="m-hero">
           <span class="label">Net worth &middot; CHF</span>
-          <div class="v">184&rsquo;320<span class="u"></span></div>
+          <div class="v"><span data-bind="netWorth" data-fmt="num">0</span><span class="u"></span></div>
           <div class="row" style="justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
-            <span class="delta-pill">&uarr; +2&rsquo;840 &middot; +1.6%</span>
+            <span class="delta-pill" data-show-if="netWorth">steady</span>
           </div>
           <svg class="spark" viewBox="0 0 320 44" preserveAspectRatio="none">
             <path d="M0 38 C 30 36, 60 30, 90 26 S 150 18, 180 14 S 240 12, 270 8 S 310 4, 320 2"
@@ -248,13 +248,13 @@
 
         <div class="m-row2">
           <div class="m-tile">
-            <span class="label">In &middot; May</span>
-            <div class="v">8&rsquo;040</div>
+            <span class="label">In &middot; <span data-month></span></span>
+            <div class="v"><span data-bind="netMonthly" data-fmt="num">0</span></div>
             <div class="card-sub" style="margin-top: 2px;">salary + side</div>
           </div>
           <div class="m-tile">
-            <span class="label">Out &middot; May</span>
-            <div class="v">4&rsquo;409</div>
+            <span class="label">Out &middot; <span data-month></span></span>
+            <div class="v"><span data-bind="totalOut" data-fmt="num">0</span></div>
             <div class="card-sub" style="margin-top: 2px;">fixed + variable</div>
           </div>
         </div>
@@ -262,23 +262,9 @@
         <div class="m-card">
           <div class="head">
             <h3>Up next</h3>
-            <span class="link">view all &rarr;</span>
+            <span class="card-sub">upcoming bills</span>
           </div>
-          <div class="m-bill">
-            <div class="day-chip"><div><span>May</span><span class="d">12</span></div></div>
-            <div class="name">Salt mobile + internet<span class="sub">Utilities &middot; in 3 days</span></div>
-            <div class="amt">95</div>
-          </div>
-          <div class="m-bill">
-            <div class="day-chip"><div><span>May</span><span class="d">15</span></div></div>
-            <div class="name">SBB GA<span class="sub">Transport &middot; in 6 days</span></div>
-            <div class="amt">185</div>
-          </div>
-          <div class="m-bill">
-            <div class="day-chip"><div><span>May</span><span class="d">20</span></div></div>
-            <div class="name">Holmes Place<span class="sub">Health &middot; in 11 days</span></div>
-            <div class="amt">89</div>
-          </div>
+          <div data-list="mobile-bills"></div>
         </div>
 
         <div class="m-card">
@@ -287,27 +273,7 @@
             <span class="card-sub">Top 3 buckets</span>
           </div>
 
-          <div class="m-budget">
-            <div class="top">
-              <span>Groceries</span>
-              <span class="v">612 / 700</span>
-            </div>
-            <div class="bar"><span style="width: 87%; background: var(--cat-groceries);"></span></div>
-          </div>
-          <div class="m-budget">
-            <div class="top">
-              <span>Dining &amp; leisure</span>
-              <span class="v">268 / 250 &middot; over</span>
-            </div>
-            <div class="bar"><span style="width: 100%; background: var(--accent);"></span></div>
-          </div>
-          <div class="m-budget">
-            <div class="top">
-              <span>Shopping</span>
-              <span class="v">198 / 300</span>
-            </div>
-            <div class="bar"><span style="width: 66%; background: var(--cat-shopping);"></span></div>
-          </div>
+          <div data-list="mobile-budgets"></div>
         </div>
 
         <div class="m-tabbar">
@@ -339,5 +305,7 @@
 
 </div>
 
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>

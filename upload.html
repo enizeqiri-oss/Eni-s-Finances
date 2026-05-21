@@ -71,7 +71,7 @@
   }
 </style>
 </head>
-<body>
+<body data-page="upload">
 <div class="app">
 
 <aside class="sidebar">
@@ -99,12 +99,13 @@
   <div class="spacer"></div>
   <div class="side-card">
     <span class="label">Statement period</span>
-    <div class="v">May 2026</div>
+    <div class="v" data-month>—</div>
   </div>
   <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Reset all data</a>
   <div class="user">
-    <div class="avatar">LB</div>
-    <div><div class="who">Lena B&uuml;hlmann</div><div class="where">Kanton Z&uuml;rich</div></div>
+    <div class="avatar"><span data-bind="profile.firstName">L</span></div>
+    <div><div class="who"><span data-bind="profile.firstName">You</span></div><div class="where" data-bind="profile.kanton">Kanton</div></div>
   </div>
 </aside>
 
@@ -197,7 +198,7 @@
             </div>
 
             <div class="action-row">
-              <button class="btn-primary">
+              <button class="btn-primary" data-action="confirm-tx">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
                 Confirm &amp; file
               </button>
@@ -298,5 +299,8 @@
 
 </main>
 </div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/atelier.css">
 </head>
-<body>
+<body data-page="summary">
 <div class="app">
 
 <aside class="sidebar">
@@ -37,12 +37,13 @@
   <div class="spacer"></div>
   <div class="side-card">
     <span class="label">Statement period</span>
-    <div class="v">May 2026</div>
+    <div class="v" data-month>—</div>
   </div>
   <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Reset all data</a>
   <div class="user">
-    <div class="avatar">LB</div>
-    <div><div class="who">Lena B&uuml;hlmann</div><div class="where">Kanton Z&uuml;rich</div></div>
+    <div class="avatar"><span data-bind="profile.firstName">L</span></div>
+    <div><div class="who"><span data-bind="profile.firstName">You</span></div><div class="where" data-bind="profile.kanton">Kanton</div></div>
   </div>
 </aside>
 
@@ -51,50 +52,32 @@
   <header class="topbar">
     <div class="left">
       <span class="eyebrow">Monthly statement</span>
-      <h1 class="display"><em>May</em> in review</h1>
+      <h1 class="display"><em data-month>This month</em> in review</h1>
     </div>
     <div class="top-actions">
-      <button class="icon-btn" aria-label="Search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
-      </button>
-      <button class="icon-btn" aria-label="Notifications">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
-      </button>
-      <div class="month-nav">
-        <button class="icon-btn" aria-label="Previous month">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m15 5-7 7 7 7"/></svg>
-        </button>
-        <span class="label" style="font-family: var(--serif); font-size: 18px; text-transform: none; color: var(--ink); letter-spacing: -0.005em;">May 2026</span>
-        <button class="icon-btn" aria-label="Next month">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 5 7 7-7 7"/></svg>
-        </button>
-      </div>
-      <a class="btn-ghost" href="summary-print.html" target="_blank" rel="noopener">
-        Print statement
-      </a>
+      <a class="btn-ghost" href="summary-print.html" target="_blank" rel="noopener">Print statement</a>
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero" style="grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 18px;">
     <div class="col">
       <span class="label">Saved this month</span>
-      <div class="num-xl">3&rsquo;631<span class="unit">CHF</span></div>
-      <div class="italic-s muted" style="margin-top: 12px;">&mdash; <em>your strongest month since February.</em></div>
+      <div class="num-xl"><span data-bind="saved" data-fmt="num">0</span><span class="unit">CHF</span></div>
+      <div class="italic-s muted" style="margin-top: 12px;">&mdash; <em>your numbers, updated live.</em></div>
     </div>
     <div class="col">
       <span class="label">In</span>
-      <div class="num-l">8&rsquo;040</div>
+      <div class="num-l"><span data-bind="netMonthly" data-fmt="num">0</span></div>
       <div class="italic-s muted" style="margin-top: 4px;">salary + side</div>
     </div>
     <div class="col">
       <span class="label">Out</span>
-      <div class="num-l">4&rsquo;409</div>
+      <div class="num-l"><span data-bind="totalOut" data-fmt="num">0</span></div>
       <div class="italic-s muted" style="margin-top: 4px;">fixed + variable</div>
     </div>
     <div class="col">
       <span class="label">Rate</span>
-      <div class="num-l">45%</div>
+      <div class="num-l"><span data-bind="savingsRate">0</span>%</div>
       <div class="italic-s muted" style="margin-top: 4px;">savings rate</div>
     </div>
   </section>
@@ -104,7 +87,7 @@
       <div class="card-head">
         <div>
           <h2>Income vs outgoing</h2>
-          <div class="card-sub">last 6 months</div>
+          <div class="card-sub">last 6 months &middot; illustrative</div>
         </div>
       </div>
 
@@ -117,19 +100,14 @@
         <g>
           <rect x="20"  y="44"  width="22" height="126" fill="#1A1815"/>
           <rect x="48"  y="110" width="22" height="60"  fill="#C66A4E"/>
-
           <rect x="110" y="40"  width="22" height="130" fill="#1A1815"/>
           <rect x="138" y="104" width="22" height="66"  fill="#C66A4E"/>
-
           <rect x="200" y="46"  width="22" height="124" fill="#1A1815"/>
           <rect x="228" y="112" width="22" height="58"  fill="#C66A4E"/>
-
           <rect x="290" y="42"  width="22" height="128" fill="#1A1815"/>
           <rect x="318" y="98"  width="22" height="72"  fill="#C66A4E"/>
-
           <rect x="380" y="46"  width="22" height="124" fill="#1A1815"/>
           <rect x="408" y="116" width="22" height="54"  fill="#C66A4E"/>
-
           <rect x="470" y="44"  width="22" height="126" fill="#1A1815"/>
           <rect x="498" y="108" width="22" height="62"  fill="#C66A4E"/>
         </g>
@@ -156,38 +134,32 @@
           <div class="card-sub">all categories</div>
         </div>
       </div>
-      <ul class="cats">
-        <li><span class="dot" style="background:var(--cat-housing)"></span>Housing &amp; utilities<span class="amt">2&rsquo;324</span><span class="pct">49%</span></li>
-        <li><span class="dot" style="background:var(--cat-insurance)"></span>Insurance<span class="amt">384</span><span class="pct">8%</span></li>
-        <li><span class="dot" style="background:var(--cat-transport)"></span>Transport<span class="amt">263</span><span class="pct">6%</span></li>
-        <li><span class="dot" style="background:var(--cat-groceries)"></span>Groceries<span class="amt">612</span><span class="pct">13%</span></li>
-        <li><span class="dot" style="background:var(--cat-dining)"></span>Dining &amp; leisure<span class="amt">410</span><span class="pct">9%</span></li>
-        <li><span class="dot" style="background:var(--cat-shopping)"></span>Shopping &amp; other<span class="amt">198</span><span class="pct">4%</span></li>
-        <li><span class="dot" style="background:var(--cat-subs)"></span>Subscriptions<span class="amt">34</span><span class="pct">1%</span></li>
-        <li><span class="dot" style="background:var(--cat-health)"></span>Health<span class="amt">89</span><span class="pct">2%</span></li>
-      </ul>
+      <ul class="cats" data-list="categories"></ul>
     </div>
   </section>
 
   <section class="insights">
     <div class="insight good">
       <div class="tag">Achievement</div>
-      <h3>Below grocery budget &mdash; again</h3>
-      <p>You spent <strong>CHF 612</strong> against your <strong>CHF 700</strong> target. Third month running.</p>
+      <h3>Tracking your grocery target</h3>
+      <p data-insight="achievement-body"></p>
     </div>
     <div class="insight warn">
-      <div class="tag">Small drift</div>
-      <h3>Dining slightly over</h3>
-      <p>CHF 268 vs CHF 250 target. Two unusually large weekends. Worth a glance.</p>
+      <div class="tag">Dining</div>
+      <h3>How dining is going</h3>
+      <p data-insight="drift-body"></p>
     </div>
     <div class="insight alert">
-      <div class="tag">Next month</div>
-      <h3>A heavier June</h3>
-      <p>SBB annual pass renewal &middot; <strong>CHF 3&rsquo;995</strong> falls 12 June. We&rsquo;ve pre-allocated.</p>
+      <div class="tag">Heads up</div>
+      <h3>What&rsquo;s next</h3>
+      <p>You can edit your bills, budgets and side income any time. Every change here is reflected immediately on the Overview.</p>
     </div>
   </section>
 
 </main>
 </div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
 </body>
 </html>
