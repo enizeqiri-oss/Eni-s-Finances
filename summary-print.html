@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>May in review — Atelier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ECE5D4;
+    --paper: #F4EEDE;
+    --ink: #1A1815;
+    --ink-2: #4A4538;
+    --ink-3: #8A8472;
+    --rule: #D9D1BC;
+    --rule-2: #C7BDA3;
+    --accent: #B84A2A;
+    --accent-soft: #E9D4C5;
+    --good: #6B8E5A;
+    --good-soft: #DDE3CE;
+    --warn: #B68A4C;
+    --warn-soft: #EFE1C9;
+    --bar-in: #1A1815;
+    --bar-out: #C66A4E;
+    --cat-housing: #1A1815;
+    --cat-insurance: #6B8E5A;
+    --cat-transport: #7A8FA8;
+    --cat-groceries: #9DA978;
+    --cat-dining: #C66A4E;
+    --cat-shopping: #A89779;
+    --cat-subs: #9C7BA0;
+    --cat-health: #C4A571;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Fraunces", "Times New Roman", Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 380;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.4;
+  }
+
+  .mono, .label, .chip, .meta, .stat-label, .cat-pct, .cat-amt, .footer-meta {
+    font-family: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .label, .chip, .stat-label {
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--ink-3);
+  }
+  em, .italic { font-style: italic; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    padding: 22mm 20mm 18mm;
+    background: var(--paper);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 24px 60px -30px rgba(50, 40, 20, 0.25);
+    position: relative;
+  }
+
+  /* Top bar */
+  .top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .brand-name {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+  }
+  .brand-ver {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .top-meta {
+    text-align: right;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  .top-meta strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Title */
+  .title-block { margin: 6px 0 22px; }
+  .title-chip {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 360;
+    font-size: 56px;
+    line-height: 1.02;
+    margin: 0;
+    letter-spacing: -0.015em;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 360;
+  }
+
+  /* Hero saved card */
+  .hero {
+    background: #F9F4E5;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 26px;
+    align-items: end;
+    margin-bottom: 22px;
+  }
+  .hero .col { min-width: 0; }
+  .hero .saved-label { margin-bottom: 6px; }
+  .hero .saved-num {
+    font-family: "Fraunces", serif;
+    font-weight: 360;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .hero .saved-num .unit {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    color: var(--ink-3);
+    letter-spacing: 0.12em;
+    font-weight: 500;
+  }
+  .hero .saved-note {
+    font-style: italic;
+    color: var(--ink-2);
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .stat .stat-num {
+    font-family: "Fraunces", serif;
+    font-weight: 360;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .stat .stat-sub {
+    font-family: "Fraunces", serif;
+    font-style: italic;
+    color: var(--ink-3);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .hero .divider {
+    border-left: 1px solid var(--rule);
+    padding-left: 22px;
+  }
+
+  /* Mid: chart + categories */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .card {
+    background: #F9F4E5;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+  .card h2 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0 0 2px;
+    letter-spacing: -0.005em;
+  }
+  .card .card-sub {
+    font-family: "JetBrains Mono", monospace;
+    color: var(--ink-3);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+
+  /* Chart */
+  .chart {
+    width: 100%;
+    height: 200px;
+    display: block;
+  }
+  .chart-legend {
+    display: flex;
+    gap: 18px;
+    margin-top: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.06em;
+  }
+  .chart-legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 7px;
+    vertical-align: -1px;
+    border-radius: 1px;
+  }
+
+  /* Categories */
+  .cats { list-style: none; padding: 0; margin: 0; }
+  .cats li {
+    display: grid;
+    grid-template-columns: 14px 1fr auto auto;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--rule);
+    font-size: 14px;
+  }
+  .cats li:last-child { border-bottom: none; }
+  .cats .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translateY(1px);
+  }
+  .cats .cat-name { color: var(--ink); }
+  .cats .cat-amt {
+    font-size: 13px;
+    color: var(--ink);
+    min-width: 56px;
+    text-align: right;
+  }
+  .cats .cat-pct {
+    font-size: 12px;
+    color: var(--ink-3);
+    min-width: 38px;
+    text-align: right;
+  }
+
+  /* Footer cards */
+  .insights {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .insight {
+    border-radius: 12px;
+    background: #F9F4E5;
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink-3);
+    position: relative;
+  }
+  .insight.good   { border-left-color: var(--good); }
+  .insight.warn   { border-left-color: var(--warn); }
+  .insight.alert  { border-left-color: var(--accent); }
+  .insight .tag {
+    font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 9.5px;
+    margin-bottom: 8px;
+  }
+  .insight.good  .tag { color: var(--good); }
+  .insight.warn  .tag { color: var(--warn); }
+  .insight.alert .tag { color: var(--accent); }
+  .insight h3 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+    font-size: 17px;
+    margin: 0 0 6px;
+    letter-spacing: -0.005em;
+  }
+  .insight p {
+    margin: 0;
+    color: var(--ink-2);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .insight p strong { color: var(--ink); font-weight: 500; }
+
+  /* Footer */
+  .footer {
+    margin-top: 22px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Floating print button (screen only) */
+  .print-bar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+  }
+  .print-bar button {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 16px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px -8px rgba(184, 74, 42, 0.6);
+  }
+  .print-bar button.ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule-2);
+    box-shadow: none;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    html, body { background: #fff; }
+    body { background: #fff; }
+    .page {
+      width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 14mm 14mm 12mm;
+      box-shadow: none;
+      background: #fff;
+    }
+    .hero, .card, .insight {
+      background: #fff;
+      border-color: #DAD3BD;
+    }
+    .print-bar { display: none; }
+    .insight, .card, .hero { break-inside: avoid; page-break-inside: avoid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <button class="ghost" onclick="window.history.length>1?window.history.back():window.close()">Close</button>
+  <button onclick="window.print()">Print statement</button>
+</div>
+
+<article class="page">
+  <header class="top">
+    <div class="brand">
+      <span class="brand-name">Atelier</span>
+      <span class="brand-ver">v 4.2</span>
+    </div>
+    <div class="top-meta">
+      <div>Statement &middot; <strong>May 2026</strong></div>
+      <div>Lena B&uuml;hlmann &middot; Kanton Z&uuml;rich</div>
+    </div>
+  </header>
+
+  <section class="title-block">
+    <div class="title-chip">Monthly Statement</div>
+    <h1><em>May</em> in review</h1>
+  </section>
+
+  <section class="hero">
+    <div class="col">
+      <div class="label saved-label">Saved this month</div>
+      <div class="saved-num">3&rsquo;631<span class="unit">CHF</span></div>
+      <div class="saved-note">&mdash; your strongest month since February.</div>
+    </div>
+    <div class="col divider stat">
+      <div class="stat-label">In</div>
+      <div class="stat-num">8&rsquo;040</div>
+      <div class="stat-sub">salary + side</div>
+    </div>
+    <div class="col divider stat">
+      <div class="stat-label">Out</div>
+      <div class="stat-num">4&rsquo;409</div>
+      <div class="stat-sub">fixed + variable</div>
+    </div>
+    <div class="col divider stat">
+      <div class="stat-label">Rate</div>
+      <div class="stat-num">45%</div>
+      <div class="stat-sub">savings rate</div>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <h2>Income vs outgoing</h2>
+      <div class="card-sub">last 6 months</div>
+      <svg class="chart" viewBox="0 0 560 200" preserveAspectRatio="none" aria-label="Income vs outgoing bar chart">
+        <!-- gridlines -->
+        <g stroke="#E5DCC2" stroke-width="1">
+          <line x1="0" y1="40"  x2="560" y2="40"/>
+          <line x1="0" y1="90"  x2="560" y2="90"/>
+          <line x1="0" y1="140" x2="560" y2="140"/>
+          <line x1="0" y1="170" x2="560" y2="170"/>
+        </g>
+        <!-- 6 months: Dec, Jan, Feb, Mar, Apr, May -->
+        <!-- bar pair widths: bar=22, gap=6, pair=50, slot=90, x = i*90 + 20 -->
+        <g>
+          <!-- Dec -->
+          <rect x="20"  y="44"  width="22" height="126" fill="#1A1815"/>
+          <rect x="48"  y="110" width="22" height="60"  fill="#C66A4E"/>
+          <!-- Jan -->
+          <rect x="110" y="40"  width="22" height="130" fill="#1A1815"/>
+          <rect x="138" y="104" width="22" height="66"  fill="#C66A4E"/>
+          <!-- Feb -->
+          <rect x="200" y="46"  width="22" height="124" fill="#1A1815"/>
+          <rect x="228" y="112" width="22" height="58"  fill="#C66A4E"/>
+          <!-- Mar -->
+          <rect x="290" y="42"  width="22" height="128" fill="#1A1815"/>
+          <rect x="318" y="98"  width="22" height="72"  fill="#C66A4E"/>
+          <!-- Apr -->
+          <rect x="380" y="46"  width="22" height="124" fill="#1A1815"/>
+          <rect x="408" y="116" width="22" height="54"  fill="#C66A4E"/>
+          <!-- May -->
+          <rect x="470" y="44"  width="22" height="126" fill="#1A1815"/>
+          <rect x="498" y="108" width="22" height="62"  fill="#C66A4E"/>
+        </g>
+        <!-- baseline -->
+        <line x1="0" y1="170" x2="560" y2="170" stroke="#C7BDA3" stroke-width="1"/>
+        <!-- month labels -->
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#8A8472" text-anchor="middle">
+          <text x="45"  y="190">Dec</text>
+          <text x="135" y="190">Jan</text>
+          <text x="225" y="190">Feb</text>
+          <text x="315" y="190">Mar</text>
+          <text x="405" y="190">Apr</text>
+          <text x="495" y="190">May</text>
+        </g>
+      </svg>
+      <div class="chart-legend">
+        <span><span class="swatch" style="background:#1A1815"></span>Income</span>
+        <span><span class="swatch" style="background:#C66A4E"></span>Outgoing</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Where it went</h2>
+      <div class="card-sub">all categories</div>
+      <ul class="cats">
+        <li><span class="dot" style="background:var(--cat-housing)"></span>
+            <span class="cat-name">Housing &amp; utilities</span>
+            <span class="cat-amt">2&rsquo;324</span><span class="cat-pct">49%</span></li>
+        <li><span class="dot" style="background:var(--cat-insurance)"></span>
+            <span class="cat-name">Insurance</span>
+            <span class="cat-amt">384</span><span class="cat-pct">8%</span></li>
+        <li><span class="dot" style="background:var(--cat-transport)"></span>
+            <span class="cat-name">Transport</span>
+            <span class="cat-amt">263</span><span class="cat-pct">6%</span></li>
+        <li><span class="dot" style="background:var(--cat-groceries)"></span>
+            <span class="cat-name">Groceries</span>
+            <span class="cat-amt">612</span><span class="cat-pct">13%</span></li>
+        <li><span class="dot" style="background:var(--cat-dining)"></span>
+            <span class="cat-name">Dining &amp; leisure</span>
+            <span class="cat-amt">410</span><span class="cat-pct">9%</span></li>
+        <li><span class="dot" style="background:var(--cat-shopping)"></span>
+            <span class="cat-name">Shopping &amp; other</span>
+            <span class="cat-amt">198</span><span class="cat-pct">4%</span></li>
+        <li><span class="dot" style="background:var(--cat-subs)"></span>
+            <span class="cat-name">Subscriptions</span>
+            <span class="cat-amt">34</span><span class="cat-pct">1%</span></li>
+        <li><span class="dot" style="background:var(--cat-health)"></span>
+            <span class="cat-name">Health</span>
+            <span class="cat-amt">89</span><span class="cat-pct">2%</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="insights">
+    <div class="insight good">
+      <div class="tag">Achievement</div>
+      <h3>Below grocery budget &mdash; again</h3>
+      <p>You spent <strong>CHF 612</strong> against your <strong>CHF 700</strong> target. Third month running.</p>
+    </div>
+    <div class="insight warn">
+      <div class="tag">Small drift</div>
+      <h3>Dining slightly over</h3>
+      <p>CHF 268 vs CHF 250 target. Two unusually large weekends. Worth a glance.</p>
+    </div>
+    <div class="insight alert">
+      <div class="tag">Next month</div>
+      <h3>A heavier June</h3>
+      <p>SBB annual pass renewal &middot; <strong>CHF 3&rsquo;995</strong> falls 12 June. We&rsquo;ve pre-allocated.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>Generated 19 May 2026 &middot; Atelier v 4.2</div>
+    <div>Account &middot; LB &middot; CHF</div>
+  </footer>
+</article>
+
+</body>
+</html>
