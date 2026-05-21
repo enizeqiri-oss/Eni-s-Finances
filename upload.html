@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Upload — Atelier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+<style>
+  .receipt {
+    background: #FFF8E8;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 18px 22px;
+    width: 220px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: var(--ink-2);
+    letter-spacing: 0.04em;
+    position: relative;
+    overflow: hidden;
+  }
+  .receipt h5 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0;
+    margin: 0 0 4px;
+  }
+  .receipt .vsmall { font-size: 10px; text-decoration: line-through; color: var(--ink-3); margin-bottom: 12px; }
+  .receipt .ln { display: flex; justify-content: space-between; padding: 3px 0; }
+  .receipt .total {
+    border-top: 1px solid var(--ink-2);
+    margin-top: 10px;
+    padding-top: 8px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .receipt .meta { margin-top: 14px; font-size: 9.5px; color: var(--ink-3); }
+
+  .scan-row {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    align-items: center;
+    gap: 0;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .scan-row:last-child { border-bottom: none; }
+  .scan-row .label { font-family: var(--mono); font-size:10.5px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; padding-left: 0; }
+  .field-row {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .field-row:last-child { border-bottom: none; }
+  .field-row .v { font-family: var(--serif); font-size: 16px; font-weight: 380; }
+  .field-row .cat-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--accent-tint);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 450;
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Atelier</span>
+    <span class="brand-ver">v 4.2</span>
+  </div>
+  <nav class="nav">
+    <a class="nav-item" href="index.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>Overview
+    </a>
+    <a class="nav-item" href="income.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>Income
+    </a>
+    <a class="nav-item" href="bills.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Bills
+    </a>
+    <a class="nav-item active" href="upload.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>Upload
+    </a>
+    <a class="nav-item" href="summary.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Summary
+    </a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="side-card">
+    <span class="label">Statement period</span>
+    <div class="v">May 2026</div>
+  </div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <div class="user">
+    <div class="avatar">LB</div>
+    <div><div class="who">Lena B&uuml;hlmann</div><div class="where">Kanton Z&uuml;rich</div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Document inbox &middot; 4 to review</span>
+      <h1 class="display">Drop a bill. <em>We&rsquo;ll read it.</em></h1>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="grid-2" style="gap: 22px;">
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="dropzone">
+        <div class="file-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+          <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/></svg>
+          </div>
+        </div>
+        <div class="body">
+          <h2>Drop bills here</h2>
+          <p>PDF, JPG, PNG or HEIC. We read the vendor, amount and due date &mdash; then file it against the right monthly budget. Multi-page bills are stitched automatically.</p>
+          <div class="actions">
+            <button class="btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>
+              Choose file
+            </button>
+            <button class="btn-ghost">From camera</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 4px;">
+          <div>
+            <h2>Currently parsing</h2>
+            <div class="card-sub">IMG_2841.jpeg</div>
+          </div>
+          <span class="pill reading">reading</span>
+        </div>
+
+        <div class="row" style="gap: 26px; align-items: flex-start; margin-top: 16px;">
+          <div class="receipt">
+            <h5>MIGROS</h5>
+            <div class="vsmall">M-Restaurant Sihlcity</div>
+            <div class="ln"><span>Caf&eacute; latte</span><span>4.80</span></div>
+            <div class="ln"><span>Sandwich</span><span>8.20</span></div>
+            <div class="ln"><span>Salat klein</span><span>5.40</span></div>
+            <div class="ln total"><span>TOTAL CHF</span><span>18.40</span></div>
+            <div class="meta">17.05.2026 12:14<br>MWST 7.7%</div>
+          </div>
+
+          <div style="flex: 1; min-width: 0;">
+            <div class="field-row">
+              <span class="label">Vendor</span>
+              <div class="v">Migros M-Restaurant</div>
+              <span class="conf"><span class="bar"><span style="width:99%"></span></span>99</span>
+            </div>
+            <div class="field-row">
+              <span class="label">Amount</span>
+              <div class="v">CHF 18.40</div>
+              <span class="conf"><span class="bar"><span style="width:99%"></span></span>99</span>
+            </div>
+            <div class="field-row">
+              <span class="label">Date</span>
+              <div class="v">17 May 2026</div>
+              <span class="conf"><span class="bar"><span style="width:97%"></span></span>97</span>
+            </div>
+            <div class="field-row">
+              <span class="label">Category</span>
+              <div><span class="cat-pill">Dining</span></div>
+              <span class="conf warn"><span class="bar"><span style="width:92%"></span></span>92</span>
+            </div>
+            <div class="field-row">
+              <span class="label">Bucket</span>
+              <div class="v">Variable &middot; May</div>
+              <span class="conf"><span class="bar"><span style="width:100%"></span></span>100</span>
+            </div>
+
+            <div class="action-row">
+              <button class="btn-primary">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
+                Confirm &amp; file
+              </button>
+              <button class="btn-ghost">Edit fields</button>
+              <button class="btn-ghost" style="border:none; color: var(--ink-3);">Skip</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>Inbox</h2>
+            <div class="card-sub">Last 7 days &middot; 4 documents</div>
+          </div>
+        </div>
+
+        <div class="inbox-row">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div>
+          <div>
+            <div class="name">Helsana Versicherung</div>
+            <div class="file">rechnung-helsana-mai.pdf</div>
+          </div>
+          <div class="right">
+            <span class="amt">384.00</span>
+            <span class="pill matched">matched</span>
+          </div>
+        </div>
+
+        <div class="inbox-row">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div>
+          <div>
+            <div class="name">Migros M-Restaurant</div>
+            <div class="file">IMG_2841.jpeg</div>
+          </div>
+          <div class="right">
+            <span class="amt">18.40</span>
+            <span class="pill parsed">parsed</span>
+          </div>
+        </div>
+
+        <div class="inbox-row">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div>
+          <div>
+            <div class="name">EWZ Stadt Z&uuml;rich</div>
+            <div class="file">Scan_20260518.pdf</div>
+          </div>
+          <div class="right">
+            <span class="amt">124.20</span>
+            <span class="pill matched">matched</span>
+          </div>
+        </div>
+
+        <div class="inbox-row">
+          <div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg></div>
+          <div>
+            <div class="name">SBB</div>
+            <div class="file">rechnung-sbb.pdf</div>
+          </div>
+          <div class="right">
+            <span class="amt">185.00</span>
+            <span class="pill reading">reading&hellip;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="star">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 13.8 8.2 20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+        </div>
+        <div>
+          <h4>Auto-filed this month</h4>
+          <p>23 documents recognized &middot; <strong>CHF 4&rsquo;284</strong> categorized automatically. Two needed a quick correction (Coop &rarr; Groceries instead of Dining).</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 16px 20px;">
+        <div class="card-head" style="margin-bottom: 8px;">
+          <div>
+            <h2 style="font-size: 17px;">How it works</h2>
+            <div class="card-sub">Read &rarr; Match &rarr; File</div>
+          </div>
+        </div>
+        <ol style="margin: 6px 0 0; padding-left: 16px; font-size: 13px; color: var(--ink-2); line-height: 1.7;">
+          <li><strong>Read.</strong> OCR pulls vendor, total, tax and date from the image or PDF.</li>
+          <li><strong>Match.</strong> We compare against known bills and your last 90 days of spending.</li>
+          <li><strong>File.</strong> The document is placed against the right bucket &mdash; ready for your monthly statement.</li>
+        </ol>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+</body>
+</html>

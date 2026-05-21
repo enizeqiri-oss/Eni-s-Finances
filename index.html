@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Overview — Atelier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Atelier</span>
+    <span class="brand-ver">v 4.2</span>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-item active" href="index.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>
+      Overview
+    </a>
+    <a class="nav-item" href="income.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>
+      Income
+    </a>
+    <a class="nav-item" href="bills.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+      Bills
+    </a>
+    <a class="nav-item" href="upload.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>
+      Upload
+    </a>
+    <a class="nav-item" href="summary.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+      Summary
+    </a>
+  </nav>
+
+  <div class="spacer"></div>
+
+  <div class="side-card">
+    <span class="label">Statement period</span>
+    <div class="v">May 2026</div>
+  </div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <div class="user">
+    <div class="avatar">LB</div>
+    <div>
+      <div class="who">Lena B&uuml;hlmann</div>
+      <div class="where">Kanton Z&uuml;rich</div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Tuesday &middot; 19 May 2026</span>
+      <h1 class="display">Good evening, <em>Lena</em></h1>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+      </button>
+      <button class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        Add transaction
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO: net worth · income/spent · saved -->
+  <section class="hero" style="margin-bottom: 18px;">
+    <div class="col">
+      <span class="label">Net worth &middot; CHF</span>
+      <div class="num-xl">184&rsquo;320</div>
+      <div style="margin-top: 14px;">
+        <span class="delta-pill">&uarr; +2&rsquo;840</span>
+        <span class="delta-meta">+1.6% this month</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="stack">
+        <div>
+          <span class="label">Income &middot; this month</span>
+          <div class="num-l">8&rsquo;040</div>
+          <div class="sub-line italic-s muted">+0.0% vs Apr</div>
+        </div>
+        <div style="border-top: 1px solid var(--rule); padding-top: 14px;">
+          <span class="label">Spent &middot; this month</span>
+          <div class="num-l">4&rsquo;409</div>
+          <div class="sub-line italic-s muted">+7.7% vs Apr</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <span class="label">Saved this month</span>
+      <div class="num-l">3&rsquo;631</div>
+      <div class="sub-line muted" style="margin-top: 4px;">45% savings rate</div>
+      <div class="progress" aria-hidden="true"><span style="width: 45%"></span></div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO + CASH FLOW -->
+  <section class="grid-2" style="margin-bottom: 18px;">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Portfolio</h2>
+          <div class="card-sub">6 months &middot; vs benchmark</div>
+        </div>
+        <div class="range" role="tablist">
+          <button>1M</button>
+          <button class="active">6M</button>
+          <button>YTD</button>
+          <button>1Y</button>
+          <button>All</button>
+        </div>
+      </div>
+      <div class="row" style="gap: 16px; align-items: baseline; margin-bottom: 6px;">
+        <div class="num-l">54&rsquo;520</div>
+        <span class="delta-pill">+CHF 1&rsquo;284 &middot; +2.43%</span>
+      </div>
+      <svg class="chart" viewBox="0 0 720 220" preserveAspectRatio="none" aria-label="Portfolio line chart">
+        <g stroke="#E5DCC2" stroke-width="1">
+          <line x1="0" y1="50"  x2="720" y2="50"/>
+          <line x1="0" y1="110" x2="720" y2="110"/>
+          <line x1="0" y1="170" x2="720" y2="170"/>
+        </g>
+        <!-- benchmark MSCI World dashed -->
+        <path d="M0 170 C 80 168, 120 160, 160 160 S 250 145, 280 145 S 360 130, 400 130 S 500 120, 540 120 S 640 108, 720 100"
+              fill="none" stroke="#A89779" stroke-width="1.4" stroke-dasharray="4 5"/>
+        <!-- portfolio black -->
+        <path d="M0 175 C 60 174, 110 168, 150 156 S 220 116, 260 110 S 320 108, 360 100 S 430 80, 470 72 S 540 70, 580 60 S 660 50, 720 36"
+              fill="none" stroke="#1A1815" stroke-width="2"/>
+        <circle cx="720" cy="36" r="3.5" fill="#1A1815"/>
+        <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8A8472">
+          <text x="0"   y="210">Dec</text>
+          <text x="140" y="210">Jan</text>
+          <text x="280" y="210">Feb</text>
+          <text x="420" y="210">Mar</text>
+          <text x="560" y="210">Apr</text>
+          <text x="690" y="210">May</text>
+        </g>
+      </svg>
+      <div class="chart-legend">
+        <span><span class="swatch" style="background:#1A1815"></span>Portfolio</span>
+        <span><span class="swatch" style="background:#A89779"></span>MSCI World</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Cash flow</h2>
+          <div class="card-sub">Daily run rate &middot; May</div>
+        </div>
+      </div>
+      <div class="num-l" style="margin-bottom: 4px;">3&rsquo;631 <span class="unit">remaining</span></div>
+      <svg class="chart" viewBox="0 0 420 200" preserveAspectRatio="none" aria-label="Cash flow sparkline">
+        <defs>
+          <linearGradient id="cf" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E2B6A0" stop-opacity="0.6"/>
+            <stop offset="1" stop-color="#E2B6A0" stop-opacity="0.05"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 24 L20 28 L40 38 L60 42 L80 52 L100 56 L120 70 L140 76 L160 88 L180 94 L200 106 L220 112 L240 120 L260 128 L280 134 L300 142 L320 150 L340 156 L360 162 L380 170 L400 178 L420 180 L420 200 L0 200 Z"
+              fill="url(#cf)"/>
+        <path d="M0 24 L20 28 L40 38 L60 42 L80 52 L100 56 L120 70 L140 76 L160 88 L180 94 L200 106 L220 112 L240 120 L260 128 L280 134 L300 142 L320 150 L340 156 L360 162 L380 170 L400 178 L420 180"
+              fill="none" stroke="#C66A4E" stroke-width="1.8"/>
+      </svg>
+      <div class="row" style="justify-content: space-between; margin-top: 14px;">
+        <div>
+          <span class="label">Avg / day</span>
+          <div class="num-m">CHF 152</div>
+        </div>
+        <div>
+          <span class="label">Days left</span>
+          <div class="num-m">12</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BILLS · SPENDING · ACTIVITY -->
+  <section class="row-3">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Upcoming bills</h2>
+          <div class="card-sub">Next 7 days</div>
+        </div>
+        <a class="link" href="bills.html">view all &rarr;</a>
+      </div>
+      <div class="row" style="gap: 14px; padding: 8px 0;">
+        <div class="day-chip"><div><span style="display:block;">May</span><span class="d">12</span></div></div>
+        <div style="flex:1;">
+          <div style="font-weight: 500; font-size: 14.5px;">Salt mobile + internet</div>
+          <div class="card-sub" style="margin: 2px 0 0;">Utilities</div>
+        </div>
+        <div class="num-m">95</div>
+      </div>
+      <div class="row" style="gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule);">
+        <div class="day-chip"><div><span style="display:block;">May</span><span class="d">15</span></div></div>
+        <div style="flex:1;">
+          <div style="font-weight: 500; font-size: 14.5px;">SBB GA Monatsabo</div>
+          <div class="card-sub" style="margin: 2px 0 0;">Transport</div>
+        </div>
+        <div class="num-m">185</div>
+      </div>
+      <div class="row" style="gap: 14px; padding: 8px 0; border-top: 1px solid var(--rule);">
+        <div class="day-chip"><div><span style="display:block;">May</span><span class="d">20</span></div></div>
+        <div style="flex:1;">
+          <div style="font-weight: 500; font-size: 14.5px;">Holmes Place</div>
+          <div class="card-sub" style="margin: 2px 0 0;">Health</div>
+        </div>
+        <div class="num-m">89</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Spending</h2>
+          <div class="card-sub">Variable &middot; May</div>
+        </div>
+      </div>
+      <div class="row" style="gap: 22px; align-items: center;">
+        <svg viewBox="0 0 160 160" width="148" height="148" aria-label="Spending donut">
+          <!-- donut segments: groceries 612 (37%), dining 268 (16%), transport 78 (5%), leisure 142 (9%), shopping 198 (12%) — totals variable 1298 for chart visualization -->
+          <g fill="none" stroke-width="22">
+            <circle r="56" cx="80" cy="80" stroke="#9DA978" stroke-dasharray="130 351.86" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+            <circle r="56" cx="80" cy="80" stroke="#C66A4E" stroke-dasharray="56 351.86" stroke-dashoffset="-130" transform="rotate(-90 80 80)"/>
+            <circle r="56" cx="80" cy="80" stroke="#A89779" stroke-dasharray="42 351.86" stroke-dashoffset="-186" transform="rotate(-90 80 80)"/>
+            <circle r="56" cx="80" cy="80" stroke="#7A8FA8" stroke-dasharray="32 351.86" stroke-dashoffset="-228" transform="rotate(-90 80 80)"/>
+            <circle r="56" cx="80" cy="80" stroke="#9C7BA0" stroke-dasharray="91.86 351.86" stroke-dashoffset="-260" transform="rotate(-90 80 80)"/>
+          </g>
+          <text x="80" y="76" text-anchor="middle" font-family="Newsreader, serif" font-size="22" fill="#1A1815">1&rsquo;298</text>
+          <text x="80" y="94" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#8A8472" letter-spacing="1">VARIABLE</text>
+        </svg>
+        <ul class="cats" style="flex:1;">
+          <li><span class="dot" style="background:#9DA978"></span>Groceries<span class="amt">612</span><span class="pct">47%</span></li>
+          <li><span class="dot" style="background:#C66A4E"></span>Dining<span class="amt">268</span><span class="pct">21%</span></li>
+          <li><span class="dot" style="background:#A89779"></span>Shopping<span class="amt">198</span><span class="pct">15%</span></li>
+          <li><span class="dot" style="background:#7A8FA8"></span>Leisure<span class="amt">142</span><span class="pct">11%</span></li>
+          <li><span class="dot" style="background:#9C7BA0"></span>Transport<span class="amt">78</span><span class="pct">6%</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Recent activity</h2>
+          <div class="card-sub">Auto-categorized</div>
+        </div>
+        <a class="link" href="#">view all &rarr;</a>
+      </div>
+      <div class="cats" style="margin: 0;">
+        <div style="display:grid; grid-template-columns: 10px 1fr auto; gap:10px; align-items:center; padding:9px 0; border-bottom:1px dashed var(--rule);">
+          <span class="dot" style="background:#9DA978"></span>
+          <div>
+            <div style="font-weight:500; font-size:14px;">Migros Sihlcity</div>
+            <div class="card-sub" style="margin:2px 0 0;">17 May &middot; Groceries</div>
+          </div>
+          <div class="num-m" style="color: var(--accent);">&minus;84.30</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 10px 1fr auto; gap:10px; align-items:center; padding:9px 0; border-bottom:1px dashed var(--rule);">
+          <span class="dot" style="background:#C66A4E"></span>
+          <div>
+            <div style="font-weight:500; font-size:14px;">Hiltl</div>
+            <div class="card-sub" style="margin:2px 0 0;">16 May &middot; Dining</div>
+          </div>
+          <div class="num-m" style="color: var(--accent);">&minus;38.50</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 10px 1fr auto; gap:10px; align-items:center; padding:9px 0; border-bottom:1px dashed var(--rule);">
+          <span class="dot" style="background:#1A1815"></span>
+          <div>
+            <div style="font-weight:500; font-size:14px;">Salary &middot; Studio Schibler</div>
+            <div class="card-sub" style="margin:2px 0 0;">15 May &middot; Income</div>
+          </div>
+          <div class="num-m" style="color: #3D5A33;">+7&rsquo;800</div>
+        </div>
+        <div style="display:grid; grid-template-columns: 10px 1fr auto; gap:10px; align-items:center; padding:9px 0;">
+          <span class="dot" style="background:#A89779"></span>
+          <div>
+            <div style="font-weight:500; font-size:14px;">Globus</div>
+            <div class="card-sub" style="margin:2px 0 0;">14 May &middot; Shopping</div>
+          </div>
+          <div class="num-m" style="color: var(--accent);">&minus;128.00</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</div>
+</body>
+</html>

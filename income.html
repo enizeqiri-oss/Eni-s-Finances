@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Income — Atelier</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Atelier</span>
+    <span class="brand-ver">v 4.2</span>
+  </div>
+  <nav class="nav">
+    <a class="nav-item" href="index.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>Overview
+    </a>
+    <a class="nav-item active" href="income.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>Income
+    </a>
+    <a class="nav-item" href="bills.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Bills
+    </a>
+    <a class="nav-item" href="upload.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>Upload
+    </a>
+    <a class="nav-item" href="summary.html">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Summary
+    </a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="side-card">
+    <span class="label">Statement period</span>
+    <div class="v">May 2026</div>
+  </div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
+  <div class="user">
+    <div class="avatar">LB</div>
+    <div><div class="who">Lena B&uuml;hlmann</div><div class="where">Kanton Z&uuml;rich</div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Income setup &middot; live net calculation</span>
+      <h1 class="display">Your <em>income</em>, in full sentences.</h1>
+    </div>
+    <div class="top-actions">
+      <span class="bank-status">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
+        Connected to UBS &middot; employer recognised
+      </span>
+      <button class="btn-dark">Save</button>
+    </div>
+  </header>
+
+  <section class="grid-2" style="gap: 22px;">
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div>
+            <h2>Main employment</h2>
+            <div class="card-sub">Studio Schibler AG &middot; permanent</div>
+          </div>
+          <span class="pill paid">active</span>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <span class="label">Brutto monthly</span>
+            <input value="9'200"><span class="suffix">CHF</span>
+          </div>
+          <div class="field">
+            <span class="label">Employer</span>
+            <input value="Studio Schibler AG">
+          </div>
+          <div class="field">
+            <span class="label">Payday</span>
+            <input value="25th of month">
+          </div>
+          <div class="field">
+            <span class="label">13. Monatslohn</span>
+            <input value="Yes &middot; pro-rata in December">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div>
+            <h2>Side income</h2>
+            <div class="card-sub">Avg over last 6 months &middot; CHF 240/mo</div>
+          </div>
+          <span class="link">+ add source</span>
+        </div>
+        <div class="fields" style="grid-template-columns: 1fr 1fr;">
+          <div class="field">
+            <span class="label">Freelance consulting</span>
+            <input value="160"><span class="suffix">CHF / mo</span>
+          </div>
+          <div class="field">
+            <span class="label">IBKR dividends</span>
+            <input value="80"><span class="suffix">CHF / mo</span>
+          </div>
+          <div class="field">
+            <span class="label">Rental income</span>
+            <input value="&mdash;"><span class="suffix">none</span>
+          </div>
+          <div class="field">
+            <span class="label">Cash gifts</span>
+            <input value="&mdash;"><span class="suffix">none</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div>
+            <h2>Taxes &amp; retirement</h2>
+            <div class="card-sub">Kanton Z&uuml;rich &middot; tax year 2026</div>
+          </div>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <span class="label">Kanton</span>
+            <input value="Z&uuml;rich">
+          </div>
+          <div class="field">
+            <span class="label">Effective tax rate</span>
+            <input value="14.2"><span class="suffix">%</span>
+          </div>
+          <div class="field">
+            <span class="label">S&auml;ule 3a</span>
+            <input value="583"><span class="suffix">CHF / mo &middot; VIAC</span>
+          </div>
+          <div class="field">
+            <span class="label">BVG (pension)</span>
+            <input value="517"><span class="suffix">CHF / mo &middot; employer match</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="calc">
+        <span class="label">Live net calculation</span>
+        <div class="h">Brutto &rarr; Netto</div>
+
+        <div class="line"><span>Brutto monthly</span><span class="v">9&rsquo;200</span></div>
+        <div class="line sub"><span>&minus; Tax 14.2%</span><span class="v">&minus;1&rsquo;306</span></div>
+        <div class="line sub"><span>&minus; S&auml;ule 3a</span><span class="v">&minus;583</span></div>
+        <div class="line sub"><span>&minus; BVG</span><span class="v">&minus;517</span></div>
+        <div class="line add"><span>+ Side income</span><span class="v">+240</span></div>
+        <div class="line add"><span>+ Dividends</span><span class="v">+6</span></div>
+
+        <div class="line total">
+          <span>Netto monthly</span>
+          <span class="v">8&rsquo;040</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:14px; color:#BDB39C;">
+          <span>Annualised</span><span class="v" style="font-size:18px;">96&rsquo;480</span>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="star">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 13.8 8.2 20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+        </div>
+        <div>
+          <h4>A gentle suggestion</h4>
+          <p>Adding <strong>CHF 119/mo</strong> to your 3a brings you to the 2026 maximum of <strong>CHF 7&rsquo;258</strong>. That&rsquo;s roughly <strong>CHF 203</strong> less tax in October &mdash; we can schedule it as a standing order.</p>
+        </div>
+      </div>
+
+      <div class="note" style="background: var(--bg);">
+        <div class="star">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4 10-10"/></svg>
+        </div>
+        <div>
+          <h4>Bank connection</h4>
+          <p>UBS recognises Studio Schibler AG as your employer. Salary postings auto-match on the 25th. Last sync 19 May, 18:42.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+</body>
+</html>
