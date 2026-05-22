@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Welcome — Atelier</title>
+<title>Willkommen — Eni's Finances</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,134 +10,46 @@
 <link rel="stylesheet" href="assets/atelier.css">
 <style>
   body { background: var(--bg); }
-  .onb-shell {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-items: center;
-    justify-items: center;
-    padding: 48px 24px;
-  }
-  .onb {
-    width: min(720px, 100%);
-  }
+  .onb-shell { min-height: 100vh; display: grid; grid-template-columns: 1fr; align-items: center; justify-items: center; padding: 48px 24px; }
+  .onb { width: min(720px, 100%); }
   .onb-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 18px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-3);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+    letter-spacing: 0.16em; text-transform: uppercase;
   }
-  .onb-progress {
-    height: 4px;
-    background: #E5DCC2;
-    border-radius: 999px;
-    overflow: hidden;
-    margin-bottom: 28px;
-  }
-  .onb-progress > span {
-    display: block; height: 100%;
-    background: var(--accent);
-    border-radius: 999px;
-    transition: width 320ms ease;
-  }
-  .onb h1 {
-    font-family: var(--serif);
-    font-weight: 380;
-    font-size: 44px;
-    letter-spacing: -0.015em;
-    line-height: 1.05;
-    margin: 0 0 14px;
-  }
+  .onb-progress { height: 4px; background: #E5DCC2; border-radius: 999px; overflow: hidden; margin-bottom: 28px; }
+  .onb-progress > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width 320ms ease; }
+  .onb h1 { font-family: var(--serif); font-weight: 380; font-size: 44px; letter-spacing: -0.015em; line-height: 1.05; margin: 0 0 14px; }
   .onb h1 em { color: var(--accent); font-style: italic; }
-  .onb p.lede {
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--ink-2);
-    font-size: 17px;
-    max-width: 560px;
-    line-height: 1.5;
-    margin: 0 0 26px;
-  }
-  .onb .step-card {
-    background: var(--paper-2);
-    border: 1px solid var(--rule);
-    border-radius: var(--radius-l);
-    padding: 28px;
-  }
-  .onb .actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 26px;
-    gap: 12px;
-  }
+  .onb p.lede { font-family: var(--serif); font-style: italic; color: var(--ink-2); font-size: 17px; max-width: 560px; line-height: 1.5; margin: 0 0 26px; }
+  .onb .step-card { background: var(--paper-2); border: 1px solid var(--rule); border-radius: var(--radius-l); padding: 28px; }
+  .onb .actions { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; gap: 12px; }
   .onb .actions .left { display: flex; gap: 10px; }
   .onb .calc-chip {
-    background: var(--ink-card);
-    color: #F4EEDE;
-    border-radius: 14px;
-    padding: 14px 18px;
-    display: flex; gap: 22px; align-items: center;
-    margin-top: 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
+    background: var(--ink-card); color: #F4EEDE; border-radius: 14px;
+    padding: 14px 18px; display: flex; gap: 22px; align-items: center;
+    margin-top: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
   }
-  .onb .calc-chip strong {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 22px;
-    color: #fff;
-    letter-spacing: -0.005em;
-    display: block;
-  }
+  .onb .calc-chip strong { font-family: var(--serif); font-weight: 400; font-size: 22px; color: #fff; letter-spacing: -0.005em; display: block; }
   .onb .calc-chip .item .label { color: #BDB39C; display: block; margin-bottom: 2px; }
-
-  .bill-form {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 0.8fr 0.6fr auto;
-    gap: 10px;
-    align-items: end;
-  }
+  .bill-form { display: grid; grid-template-columns: 1.4fr 1fr 0.8fr 0.6fr auto; gap: 10px; align-items: end; }
   .bill-form .field { padding: 10px 12px; }
   .bill-form .field input, .bill-form .field select { font-size: 16px; }
-
-  .quick-row {
-    display: flex; flex-wrap: wrap; gap: 8px;
-    margin-top: 14px;
-  }
-  .quick { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule-2); background: transparent; color: var(--ink-2); cursor: pointer; }
-
+  .quick-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .quick { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule-2); background: transparent; color: var(--ink-2); cursor: pointer; transition: border-color 160ms ease, color 160ms ease, transform 140ms ease; }
+  .quick:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
   .field input::placeholder { color: var(--ink-4); }
-
-  /* welcome step */
   .welcome-stack { display: grid; grid-template-columns: 1fr; gap: 14px; }
   .welcome-stack .field { padding: 14px 16px; }
-
   .pillar-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
-  .pillar { background: #FBF6E7; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; }
+  .pillar { background: #FBF6E7; border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; transition: transform 220ms ease, border-color 220ms ease; }
+  .pillar:hover { transform: translateY(-2px); border-color: var(--rule-2); }
   .pillar h4 { font-family: var(--serif); font-weight: 400; font-size: 16px; margin: 0 0 4px; }
   .pillar p  { margin: 0; color: var(--ink-2); font-size: 13px; line-height: 1.5; }
-
-  .footer-link {
-    text-align: center;
-    margin-top: 18px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    color: var(--ink-3);
-  }
+  .footer-link { text-align: center; margin-top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); }
   .footer-link a { color: var(--accent); }
-
-  @media (max-width: 700px) {
-    .bill-form { grid-template-columns: 1fr 1fr; }
-    .onb h1 { font-size: 34px; }
-  }
+  @media (max-width: 700px) { .bill-form { grid-template-columns: 1fr 1fr; } .onb h1 { font-size: 34px; } }
 </style>
 </head>
 <body data-page="onboarding">
@@ -147,26 +59,26 @@
 
     <div class="onb-top">
       <div>
-        <span style="font-family: var(--serif); font-style: italic; text-transform: none; font-size: 22px; color: var(--ink); letter-spacing: -0.005em;">Atelier</span>
-        <span style="margin-left: 8px;">v 4.2</span>
+        <span style="font-family: var(--serif); font-style: italic; text-transform: none; font-size: 22px; color: var(--ink); letter-spacing: -0.005em;">Eni&rsquo;s</span>
+        <span style="margin-left: 6px; font-style: normal;">Finances</span>
       </div>
-      <div data-onb-step>Step 1 of 6</div>
+      <div data-onb-step>Schritt 1 von 6</div>
     </div>
 
     <div class="onb-progress"><span data-onb-progress style="width: 16%"></span></div>
 
-    <!-- STEP 1 · welcome -->
+    <!-- STEP 1 -->
     <section data-step="1" class="step-card">
-      <h1>Welcome, <em>let&rsquo;s get to know you.</em></h1>
-      <p class="lede">A calm private banker, in your pocket. No accounts to link, no passwords. Six short questions &mdash; we&rsquo;ll calculate your net monthly income and budget as you go.</p>
+      <h1>Willkommen, <em>lernen wir uns kennen.</em></h1>
+      <p class="lede">Ein ruhiger Privatbanker, in deiner Tasche. Keine Konten zu verknüpfen, keine Passwörter. Sechs kurze Fragen &mdash; dein Nettoeinkommen und Budget berechnen sich automatisch mit.</p>
 
       <div class="welcome-stack">
         <div class="field">
-          <span class="label">First name</span>
+          <span class="label">Vorname</span>
           <input data-field="profile.firstName" placeholder="Lena">
         </div>
         <div class="field">
-          <span class="label">Last name <span style="color: var(--ink-4); text-transform: none; letter-spacing: 0;">(optional)</span></span>
+          <span class="label">Nachname <span style="color: var(--ink-4); text-transform: none; letter-spacing: 0;">(optional)</span></span>
           <input data-field="profile.lastName" placeholder="Bühlmann">
         </div>
         <div class="field">
@@ -186,78 +98,78 @@
       </div>
 
       <div class="pillar-row">
-        <div class="pillar"><h4>It stays on your device.</h4><p>Everything is saved in your browser. Clear it any time from the dashboard.</p></div>
-        <div class="pillar"><h4>Take a shortcut.</h4><p>Want to see a fully populated demo first? <a href="#" data-onb-demo style="color: var(--accent);">Try Lena&rsquo;s data &rarr;</a></p></div>
+        <div class="pillar"><h4>Bleibt bei dir.</h4><p>Alles wird nur in deinem Browser gespeichert. Du kannst jederzeit alles löschen.</p></div>
+        <div class="pillar"><h4>Lieber abkürzen?</h4><p>Lust auf eine fertig befüllte Demo? <a href="#" data-onb-demo style="color: var(--accent);">Lenas Daten laden &rarr;</a></p></div>
       </div>
     </section>
 
-    <!-- STEP 2 · main employment -->
+    <!-- STEP 2 -->
     <section data-step="2" class="step-card" style="display:none;">
-      <h1>Where does your <em>main income</em> come from?</h1>
-      <p class="lede">Your gross monthly salary &mdash; what shows on your employment contract before AHV, BVG and tax.</p>
+      <h1>Woher kommt dein <em>Hauptverdienst?</em></h1>
+      <p class="lede">Dein monatliches Bruttogehalt &mdash; das, was auf deinem Arbeitsvertrag vor AHV, BVG und Steuer steht.</p>
 
       <div class="fields">
         <div class="field">
-          <span class="label">Employer</span>
-          <input data-field="employment.employer" placeholder="Studio Schibler AG">
+          <span class="label">Arbeitgeber</span>
+          <input data-field="employment.employer" placeholder="z.B. Studio Schibler AG">
         </div>
         <div class="field">
-          <span class="label">Brutto monthly</span>
+          <span class="label">Brutto monatlich</span>
           <input data-field="employment.bruttoMonthly" data-numeric="true" inputmode="decimal" placeholder="9200"><span class="suffix">CHF</span>
         </div>
         <div class="field">
-          <span class="label">Payday</span>
+          <span class="label">Zahltag</span>
           <input data-field="employment.payday" data-numeric="true" inputmode="numeric" placeholder="25">
         </div>
         <div class="field">
           <span class="label">13. Monatslohn</span>
           <select data-field="employment.thirteenth">
-            <option value="true">Yes &middot; pro-rata in December</option>
-            <option value="false">No</option>
+            <option value="true">Ja &middot; pro rata im Dezember</option>
+            <option value="false">Nein</option>
           </select>
         </div>
       </div>
 
       <div class="calc-chip">
         <div class="item"><span class="label">Brutto</span><strong>CHF <span data-onb-calc="brutto">0</span></strong></div>
-        <div class="item"><span class="label">Net monthly so far</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
+        <div class="item"><span class="label">Netto bisher</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
       </div>
     </section>
 
-    <!-- STEP 3 · side income -->
+    <!-- STEP 3 -->
     <section data-step="3" class="step-card" style="display:none;">
-      <h1>Anything <em>on the side?</em></h1>
-      <p class="lede">Freelance work, dividends, rental income &mdash; the smaller streams that quietly add up. Leave blank if it doesn&rsquo;t apply.</p>
+      <h1>Etwas <em>nebenher?</em></h1>
+      <p class="lede">Freelance-Aufträge, Dividenden, Mieteinnahmen &mdash; die kleinen Ströme, die sich still zusammenläppern. Leer lassen, wenn nicht relevant.</p>
 
       <div class="fields">
         <div class="field">
-          <span class="label">Freelance / consulting</span>
-          <input data-field="side.freelance" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / mo</span>
+          <span class="label">Freelance / Beratung</span>
+          <input data-field="side.freelance" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Dividends &middot; brokers</span>
-          <input data-field="side.dividends" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / mo</span>
+          <span class="label">Dividenden &middot; Broker</span>
+          <input data-field="side.dividends" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Rental income</span>
-          <input data-field="side.rental" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / mo</span>
+          <span class="label">Mieteinnahmen</span>
+          <input data-field="side.rental" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Other</span>
-          <input data-field="side.other" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / mo</span>
+          <span class="label">Sonstiges</span>
+          <input data-field="side.other" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF / Monat</span>
         </div>
       </div>
 
       <div class="calc-chip">
-        <div class="item"><span class="label">Side income</span><strong>CHF <span data-onb-calc="side">0</span></strong></div>
-        <div class="item"><span class="label">Net monthly so far</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
+        <div class="item"><span class="label">Nebenverdienst</span><strong>CHF <span data-onb-calc="side">0</span></strong></div>
+        <div class="item"><span class="label">Netto bisher</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
       </div>
     </section>
 
-    <!-- STEP 4 · tax & retirement -->
+    <!-- STEP 4 -->
     <section data-step="4" class="step-card" style="display:none;">
-      <h1>Taxes and <em>retirement.</em></h1>
-      <p class="lede">AHV is automatic. BVG comes off your payslip. Säule 3a is optional but tax-deductible. If you don&rsquo;t know your effective tax rate, 14% is a sensible Zürich default.</p>
+      <h1>Steuern und <em>Vorsorge.</em></h1>
+      <p class="lede">AHV ist Pflicht. BVG kommt vom Lohn weg. Säule 3a ist freiwillig, aber steuerlich abziehbar. Wenn du deinen Steuersatz nicht kennst &mdash; 14% ist ein guter Zürcher Richtwert.</p>
 
       <div class="fields">
         <div class="field">
@@ -265,142 +177,145 @@
           <input data-field="taxes.ahvRate" data-numeric="true" inputmode="decimal" placeholder="6.4"><span class="suffix">%</span>
         </div>
         <div class="field">
-          <span class="label">BVG (pension)</span>
-          <input data-field="taxes.bvg" data-numeric="true" inputmode="decimal" placeholder="500"><span class="suffix">CHF / mo</span>
+          <span class="label">BVG (Pensionskasse)</span>
+          <input data-field="taxes.bvg" data-numeric="true" inputmode="decimal" placeholder="500"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Effective tax rate</span>
+          <span class="label">Effektiver Steuersatz</span>
           <input data-field="taxes.taxRate" data-numeric="true" inputmode="decimal" placeholder="14.2"><span class="suffix">%</span>
         </div>
         <div class="field">
           <span class="label">Säule 3a</span>
-          <input data-field="taxes.saule3a" data-numeric="true" inputmode="decimal" placeholder="583"><span class="suffix">CHF / mo &middot; VIAC</span>
+          <input data-field="taxes.saule3a" data-numeric="true" inputmode="decimal" placeholder="583"><span class="suffix">CHF / Monat &middot; z.B. VIAC</span>
         </div>
       </div>
 
       <div class="calc-chip">
-        <div class="item"><span class="label">Statutory deductions</span><strong>CHF &minus;<span data-onb-calc="deductions">0</span></strong></div>
-        <div class="item"><span class="label">Net monthly</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
+        <div class="item"><span class="label">Abzüge gesetzlich</span><strong>CHF &minus;<span data-onb-calc="deductions">0</span></strong></div>
+        <div class="item"><span class="label">Netto monatlich</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
       </div>
 
       <div class="note" style="margin-top: 18px;">
         <div class="star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 13.8 8.2 20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div>
         <div>
-          <h4>A gentle suggestion</h4>
-          <p>The Säule 3a annual maximum for 2026 is CHF 7&rsquo;258 if you&rsquo;re employed (BVG-versichert). You can always change this later.</p>
+          <h4>Eine sanfte Empfehlung</h4>
+          <p>Das jährliche Maximum für die Säule 3a beträgt 2026 <strong>CHF 7&rsquo;258</strong> (für BVG-Versicherte). Du kannst es später jederzeit anpassen.</p>
         </div>
       </div>
     </section>
 
-    <!-- STEP 5 · fixed bills -->
+    <!-- STEP 5 -->
     <section data-step="5" class="step-card" style="display:none;">
-      <h1>Your <em>monthly commitments.</em></h1>
-      <p class="lede">Rent, health insurance, mobile &mdash; the recurring ones. Add as many as you like; you can edit them later from the Bills page.</p>
+      <h1>Deine monatlichen <em>Fixkosten.</em></h1>
+      <p class="lede">Miete, Krankenkasse, Handy &mdash; was jeden Monat wiederkehrt. Füge so viele hinzu wie du magst &mdash; du kannst sie später unter „Rechnungen" anpassen.</p>
 
       <div class="bill-form">
         <div class="field">
-          <span class="label">Vendor</span>
-          <input data-onb-bill-vendor placeholder="Rent — Kreis 4">
+          <span class="label">Anbieter</span>
+          <input data-onb-bill-vendor placeholder="z.B. Miete — Kreis 4">
         </div>
         <div class="field">
-          <span class="label">Category</span>
+          <span class="label">Kategorie</span>
           <select data-onb-bill-category>
-            <option>Housing</option><option>Insurance</option><option>Utilities</option>
-            <option>Transport</option><option>Health</option><option>Subs</option>
+            <option value="Housing">Wohnen</option>
+            <option value="Insurance">Versicherung</option>
+            <option value="Utilities">Energie</option>
+            <option value="Transport">Transport</option>
+            <option value="Health">Gesundheit</option>
+            <option value="Subs">Abos</option>
           </select>
         </div>
         <div class="field">
-          <span class="label">Amount</span>
+          <span class="label">Betrag</span>
           <input data-onb-bill-amount inputmode="decimal" placeholder="0"><span class="suffix">CHF</span>
         </div>
         <div class="field">
-          <span class="label">Due day</span>
-          <input data-onb-bill-day inputmode="numeric" placeholder="1">
+          <span class="label">Fälligkeit</span>
+          <input data-onb-bill-day inputmode="numeric" placeholder="Tag">
         </div>
         <button class="btn-primary" data-onb-add-bill style="height: 42px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 5v14M5 12h14"/></svg>
-          Add
+          Hinzufügen
         </button>
       </div>
 
       <div class="quick-row">
-        <span style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.12em; text-transform: uppercase; align-self: center; margin-right: 4px;">Quick add</span>
-        <button type="button" class="quick" data-quick="Rent|Housing|2000|1">Rent</button>
+        <span style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.12em; text-transform: uppercase; align-self: center; margin-right: 4px;">Schnell-Hinzufügen</span>
+        <button type="button" class="quick" data-quick="Miete|Housing|2000|1">Miete</button>
         <button type="button" class="quick" data-quick="Krankenkasse|Insurance|384|3">Krankenkasse</button>
         <button type="button" class="quick" data-quick="EWZ Strom|Utilities|110|8">Strom</button>
-        <button type="button" class="quick" data-quick="Salt mobile|Utilities|65|12">Mobile</button>
+        <button type="button" class="quick" data-quick="Salt Mobile|Utilities|65|12">Mobile</button>
         <button type="button" class="quick" data-quick="SBB Abo|Transport|185|15">SBB</button>
-        <button type="button" class="quick" data-quick="Gym|Health|89|20">Gym</button>
+        <button type="button" class="quick" data-quick="Fitness|Health|89|20">Fitness</button>
         <button type="button" class="quick" data-quick="Spotify Family|Subs|22|22">Spotify</button>
       </div>
 
       <div data-onb-bills style="margin-top: 18px;"></div>
 
       <div class="calc-chip">
-        <div class="item"><span class="label">Total fixed</span><strong>CHF <span data-onb-calc="fixed">0</span></strong></div>
-        <div class="item"><span class="label">Net monthly</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
+        <div class="item"><span class="label">Total Fixkosten</span><strong>CHF <span data-onb-calc="fixed">0</span></strong></div>
+        <div class="item"><span class="label">Netto monatlich</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
       </div>
     </section>
 
-    <!-- STEP 6 · variable budgets -->
+    <!-- STEP 6 -->
     <section data-step="6" class="step-card" style="display:none;">
-      <h1>And the <em>variable buckets.</em></h1>
-      <p class="lede">A monthly target for each. We&rsquo;ll quietly track against these and tell you if anything drifts.</p>
+      <h1>Und die <em>variablen Töpfe.</em></h1>
+      <p class="lede">Ein monatlicher Richtwert pro Bereich. Wir verfolgen ihn diskret und sagen Bescheid, wenn etwas abdriftet.</p>
 
       <div class="fields">
         <div class="field">
-          <span class="label">Groceries</span>
-          <input data-field="budgets.groceries" data-numeric="true" inputmode="decimal" placeholder="700"><span class="suffix">CHF / mo</span>
+          <span class="label">Lebensmittel</span>
+          <input data-field="budgets.groceries" data-numeric="true" inputmode="decimal" placeholder="700"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Dining</span>
-          <input data-field="budgets.dining" data-numeric="true" inputmode="decimal" placeholder="250"><span class="suffix">CHF / mo</span>
+          <span class="label">Restaurants</span>
+          <input data-field="budgets.dining" data-numeric="true" inputmode="decimal" placeholder="250"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
           <span class="label">Transport</span>
-          <input data-field="budgets.transport" data-numeric="true" inputmode="decimal" placeholder="80"><span class="suffix">CHF / mo</span>
+          <input data-field="budgets.transport" data-numeric="true" inputmode="decimal" placeholder="80"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Leisure</span>
-          <input data-field="budgets.leisure" data-numeric="true" inputmode="decimal" placeholder="200"><span class="suffix">CHF / mo</span>
+          <span class="label">Freizeit</span>
+          <input data-field="budgets.leisure" data-numeric="true" inputmode="decimal" placeholder="200"><span class="suffix">CHF / Monat</span>
         </div>
         <div class="field">
-          <span class="label">Shopping</span>
-          <input data-field="budgets.shopping" data-numeric="true" inputmode="decimal" placeholder="300"><span class="suffix">CHF / mo</span>
+          <span class="label">Einkauf</span>
+          <input data-field="budgets.shopping" data-numeric="true" inputmode="decimal" placeholder="300"><span class="suffix">CHF / Monat</span>
         </div>
       </div>
 
       <div class="calc-chip">
-        <div class="item"><span class="label">Budget envelopes</span><strong>CHF <span data-onb-calc="budget-total">0</span></strong></div>
-        <div class="item"><span class="label">Net monthly</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
+        <div class="item"><span class="label">Budgets gesamt</span><strong>CHF <span data-onb-calc="budget-total">0</span></strong></div>
+        <div class="item"><span class="label">Netto monatlich</span><strong>CHF <span data-onb-calc="net">0</span></strong></div>
       </div>
 
-      <h3 style="font-family: var(--serif); font-weight: 400; font-size: 20px; margin: 28px 0 12px;">A starting net worth <span style="color: var(--ink-3); font-style: italic;">(optional)</span></h3>
+      <h3 style="font-family: var(--serif); font-weight: 400; font-size: 20px; margin: 28px 0 12px;">Ein Startvermögen <span style="color: var(--ink-3); font-style: italic;">(optional)</span></h3>
       <div class="fields">
         <div class="field">
-          <span class="label">Total wealth today</span>
+          <span class="label">Gesamt-Vermögen heute</span>
           <input data-field="netWorth" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF</span>
         </div>
         <div class="field">
-          <span class="label">Of which invested</span>
+          <span class="label">Davon investiert</span>
           <input data-field="investments" data-numeric="true" inputmode="decimal" placeholder="0"><span class="suffix">CHF</span>
         </div>
       </div>
 
-      <p class="lede" style="margin: 22px 0 0; font-size: 15px;">That&rsquo;s it, <em><span data-onb-calc="firstname">there</span></em>. Open the dashboard whenever you&rsquo;re ready &mdash; you can always come back here to refine the numbers.</p>
+      <p class="lede" style="margin: 22px 0 0; font-size: 15px;">Das war&rsquo;s, <em><span data-onb-calc="firstname">dort</span></em>. Öffne das Dashboard wann immer du willst &mdash; du kannst jederzeit zurück und die Zahlen anpassen.</p>
     </section>
 
-    <!-- nav -->
     <div class="actions">
       <div class="left">
-        <button class="btn-ghost" data-onb-back>&larr; Back</button>
-        <button class="btn-ghost" data-onb-skip>Skip for now</button>
+        <button class="btn-ghost" data-onb-back>&larr; Zurück</button>
+        <button class="btn-ghost" data-onb-skip>Vorerst überspringen</button>
       </div>
-      <button class="btn-primary" data-onb-next>Next &rarr;</button>
+      <button class="btn-primary" data-onb-next>Weiter &rarr;</button>
     </div>
 
     <div class="footer-link">
-      Or <a href="#" data-onb-demo>load the demo with Lena&rsquo;s data</a>.
+      Oder <a href="#" data-onb-demo>Demo mit Lenas Daten laden</a>.
     </div>
 
   </div>
@@ -409,7 +324,6 @@
 <script src="assets/state.js"></script>
 <script src="assets/app.js"></script>
 <script>
-  // Quick-add chips for bills
   document.querySelectorAll('.quick').forEach(btn => {
     btn.addEventListener('click', () => {
       const [v, c, a, d] = btn.dataset.quick.split('|');

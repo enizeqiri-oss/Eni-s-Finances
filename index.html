@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
-<title>Overview — Atelier</title>
+<title>Übersicht — Eni's Finances</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,46 +14,46 @@
 
 <aside class="sidebar">
   <div class="brand">
-    <span class="brand-name">Atelier</span>
-    <span class="brand-ver">v 4.2</span>
+    <span class="brand-name">Eni&rsquo;s</span>
+    <span class="brand-ver">Finances</span>
   </div>
 
   <nav class="nav">
     <a class="nav-item active" href="index.html">
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>
-      Overview
+      Übersicht
     </a>
     <a class="nav-item" href="income.html">
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>
-      Income
+      Einkommen
     </a>
     <a class="nav-item" href="bills.html">
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
-      Bills
+      Rechnungen
     </a>
     <a class="nav-item" href="upload.html">
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>
-      Upload
+      Belege
     </a>
     <a class="nav-item" href="summary.html">
       <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
-      Summary
+      Abschluss
     </a>
   </nav>
 
   <div class="spacer"></div>
 
   <div class="side-card">
-    <span class="label">Statement period</span>
-    <div class="v" data-month>May 2026</div>
+    <span class="label">Abrechnungsperiode</span>
+    <div class="v" data-month>—</div>
   </div>
-  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile preview &rarr;</a>
-  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Reset all data</a>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile Vorschau &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Alle Daten zurücksetzen</a>
   <div class="user">
-    <div class="avatar" data-bind="profile.firstName" style="font-family: var(--mono);">LB</div>
+    <div class="avatar" data-initials>?</div>
     <div>
-      <div class="who"><span data-bind="profile.firstName">You</span> <span data-bind="profile.lastName"></span></div>
-      <div class="where" data-bind="profile.kanton">Kanton</div>
+      <div class="who"><span data-bind="profile.firstName">—</span> <span data-bind="profile.lastName"></span></div>
+      <div class="where">Kanton <span data-bind="profile.kanton">—</span></div>
     </div>
   </div>
 </aside>
@@ -63,76 +63,74 @@
   <header class="topbar">
     <div class="left">
       <span class="eyebrow" data-today></span>
-      <h1 class="display"><span data-greeting>Good evening</span>, <em data-bind="profile.firstName">there</em></h1>
+      <h1 class="display"><span data-greeting>Guten Tag</span>, <em data-bind="profile.firstName">—</em></h1>
     </div>
     <div class="top-actions">
-      <button class="icon-btn" aria-label="Search">
+      <button class="icon-btn" aria-label="Suchen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
       </button>
-      <button class="icon-btn" aria-label="Notifications">
+      <button class="icon-btn" aria-label="Mitteilungen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
       </button>
       <button class="btn-primary" data-action="add-tx">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-        Add transaction
+        Transaktion
       </button>
     </div>
   </header>
 
-  <!-- HERO: net worth · income/spent · saved -->
   <section class="hero" style="margin-bottom: 18px;">
     <div class="col">
-      <span class="label">Net worth &middot; CHF</span>
+      <span class="label">Reinvermögen &middot; CHF</span>
       <div class="num-xl"><span data-bind="netWorth" data-fmt="num">0</span></div>
       <div style="margin-top: 14px;">
-        <span class="delta-pill">&uarr; +<span data-bind="netWorth" data-fmt="num" style="display:none;"></span>steady</span>
+        <span class="delta-pill">steady</span>
       </div>
     </div>
 
     <div class="col">
       <div class="stack">
         <div>
-          <span class="label">Income &middot; this month</span>
+          <span class="label">Einnahmen &middot; diesen Monat</span>
           <div class="num-l"><span data-bind="netMonthly" data-fmt="num">0</span></div>
-          <div class="sub-line italic-s muted">salary + side</div>
+          <div class="sub-line italic-s muted">Lohn + Nebenverdienst</div>
         </div>
         <div style="border-top: 1px solid var(--rule); padding-top: 14px;">
-          <span class="label">Spent &middot; this month</span>
+          <span class="label">Ausgaben &middot; diesen Monat</span>
           <div class="num-l"><span data-bind="spentThisMonth" data-fmt="num">0</span></div>
-          <div class="sub-line italic-s muted">fixed paid + variable</div>
+          <div class="sub-line italic-s muted">Fixkosten bezahlt + variabel</div>
         </div>
       </div>
     </div>
 
     <div class="col">
-      <span class="label">Saved this month</span>
+      <span class="label">Gespart diesen Monat</span>
       <div class="num-l"><span data-bind="saved" data-fmt="num">0</span></div>
-      <div class="sub-line muted" style="margin-top: 4px;"><span data-bind="savingsRate">0</span>% savings rate</div>
+      <div class="sub-line muted" style="margin-top: 4px;"><span data-bind="savingsRate">0</span>% Sparquote</div>
       <div class="progress" aria-hidden="true"><span data-bind-width="saved / netMonthly" style="width: 0%"></span></div>
     </div>
   </section>
 
-  <!-- PORTFOLIO + CASH FLOW -->
   <section class="grid-2" style="margin-bottom: 18px;">
     <div class="card">
       <div class="card-head">
         <div>
           <h2>Portfolio</h2>
-          <div class="card-sub">6 months &middot; vs benchmark</div>
+          <div class="card-sub">6 Monate &middot; vs. Benchmark</div>
         </div>
         <div class="range" role="tablist">
           <button>1M</button>
           <button class="active">6M</button>
           <button>YTD</button>
-          <button>1Y</button>
-          <button>All</button>
+          <button>1J</button>
+          <button>Alle</button>
         </div>
       </div>
       <div class="row" style="gap: 16px; align-items: baseline; margin-bottom: 6px;">
         <div class="num-l"><span data-bind="investments" data-fmt="num">0</span></div>
         <span class="delta-pill" data-show-if="investments">+CHF 1&rsquo;284 &middot; +2.43%</span>
       </div>
-      <svg class="chart" viewBox="0 0 720 220" preserveAspectRatio="none" aria-label="Portfolio line chart">
+      <svg class="chart" viewBox="0 0 720 220" preserveAspectRatio="none" aria-label="Portfolio">
         <g stroke="#E5DCC2" stroke-width="1">
           <line x1="0" y1="50"  x2="720" y2="50"/>
           <line x1="0" y1="110" x2="720" y2="110"/>
@@ -144,12 +142,12 @@
               fill="none" stroke="#1A1815" stroke-width="2"/>
         <circle cx="720" cy="36" r="3.5" fill="#1A1815"/>
         <g font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8A8472">
-          <text x="0"   y="210">Dec</text>
+          <text x="0"   y="210">Dez</text>
           <text x="140" y="210">Jan</text>
           <text x="280" y="210">Feb</text>
-          <text x="420" y="210">Mar</text>
+          <text x="420" y="210">Mär</text>
           <text x="560" y="210">Apr</text>
-          <text x="690" y="210">May</text>
+          <text x="690" y="210">Mai</text>
         </g>
       </svg>
       <div class="chart-legend">
@@ -161,12 +159,12 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <h2>Cash flow</h2>
-          <div class="card-sub">Daily run rate &middot; <span data-month>this month</span></div>
+          <h2>Cashflow</h2>
+          <div class="card-sub">Tagesrate &middot; <span data-month></span></div>
         </div>
       </div>
-      <div class="num-l" style="margin-bottom: 4px;"><span data-bind="saved" data-fmt="num">0</span> <span class="unit">remaining</span></div>
-      <svg class="chart" viewBox="0 0 420 200" preserveAspectRatio="none" aria-label="Cash flow sparkline">
+      <div class="num-l" style="margin-bottom: 4px;"><span data-bind="saved" data-fmt="num">0</span> <span class="unit">übrig</span></div>
+      <svg class="chart" viewBox="0 0 420 200" preserveAspectRatio="none" aria-label="Cashflow">
         <defs>
           <linearGradient id="cf" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#E2B6A0" stop-opacity="0.6"/>
@@ -180,26 +178,25 @@
       </svg>
       <div class="row" style="justify-content: space-between; margin-top: 14px;">
         <div>
-          <span class="label">Avg / day</span>
+          <span class="label">Ø pro Tag</span>
           <div class="num-m">CHF <span data-bind="avgDay" data-fmt="num">0</span></div>
         </div>
         <div>
-          <span class="label">Days left</span>
+          <span class="label">Tage verbleibend</span>
           <div class="num-m"><span data-bind="daysLeft">0</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BILLS · SPENDING · ACTIVITY -->
   <section class="row-3">
     <div class="card">
       <div class="card-head">
         <div>
-          <h2>Upcoming bills</h2>
-          <div class="card-sub">Next 7 days</div>
+          <h2>Anstehende Rechnungen</h2>
+          <div class="card-sub">Nächste Fälligkeiten</div>
         </div>
-        <a class="link" href="bills.html">view all &rarr;</a>
+        <a class="link" href="bills.html">alle ansehen &rarr;</a>
       </div>
       <div data-list="upcoming-bills"></div>
     </div>
@@ -207,8 +204,8 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <h2>Spending</h2>
-          <div class="card-sub">Variable &middot; <span data-month>this month</span></div>
+          <h2>Ausgaben</h2>
+          <div class="card-sub">Variabel &middot; <span data-month></span></div>
         </div>
       </div>
       <div class="row" data-donut="spending" style="gap: 22px; align-items: center;"></div>
@@ -217,10 +214,10 @@
     <div class="card">
       <div class="card-head">
         <div>
-          <h2>Recent activity</h2>
-          <div class="card-sub">Auto-categorized</div>
+          <h2>Letzte Aktivität</h2>
+          <div class="card-sub">Automatisch kategorisiert</div>
         </div>
-        <a class="link" href="#" data-action="add-tx">+ add &rarr;</a>
+        <a class="link" href="#" data-action="add-tx">+ hinzufügen &rarr;</a>
       </div>
       <div data-list="transactions" class="cats" style="margin: 0;"></div>
     </div>
