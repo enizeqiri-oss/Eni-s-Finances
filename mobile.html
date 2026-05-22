@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mobile Vorschau — Eni's Finances</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+<style>
+  .stage {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    padding: 60px 40px;
+    background: var(--bg);
+  }
+  .stage-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .stage-head .eyebrow { display: block; margin-bottom: 8px; }
+  .stage-head h1 { font-family: var(--serif); font-weight: 380; font-size: 40px; margin: 0; letter-spacing: -0.015em; }
+  .stage-head h1 em { color: var(--accent); font-style: italic; }
+  .stage-head p { color: var(--ink-2); max-width: 520px; margin: 12px auto 0; font-size: 14.5px; line-height: 1.5; }
+
+  .device {
+    width: 390px;
+    height: 844px;
+    border-radius: 56px;
+    background: #0E0C09;
+    padding: 14px;
+    box-shadow: 0 30px 80px -40px rgba(40, 28, 10, 0.45), 0 12px 24px -16px rgba(40, 28, 10, 0.3);
+    position: relative;
+  }
+  .device .screen {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    border-radius: 44px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 32px;
+    background: #0E0C09;
+    border-radius: 999px;
+    z-index: 5;
+  }
+
+  .status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px 0;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .status .right { display: inline-flex; gap: 6px; align-items: center; }
+  .status svg { width: 14px; height: 14px; }
+
+  .m-main { flex: 1; padding: 50px 22px 0; overflow-y: auto; }
+  .m-greet { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .m-hi {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 22px;
+  }
+  .m-hi .avatar { width: 44px; height: 44px; font-size: 13px; }
+  .m-hi h1 {
+    font-family: var(--serif); font-weight: 400; font-size: 26px; margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .m-hi h1 em { color: var(--accent); font-style: italic; }
+
+  .m-hero {
+    background: var(--ink-card);
+    color: #F4EEDE;
+    border-radius: 22px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .m-hero .label { color: #BDB39C; }
+  .m-hero .v {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 360;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 6px 0 12px;
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .m-hero .v .u { font-family: var(--mono); font-size: 11px; color: #BDB39C; letter-spacing: 0.12em; }
+  .m-hero .spark { width: 100%; height: 44px; display: block; }
+  .m-hero .delta-pill {
+    background: rgba(255,255,255,0.08); color: #D7DFC8;
+  }
+
+  .m-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+  .m-tile {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 14px 16px;
+  }
+  .m-tile .label { display: block; margin-bottom: 4px; }
+  .m-tile .v { font-family: var(--serif); font-size: 24px; font-weight: 380; line-height: 1.1; }
+
+  .m-card {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .m-card .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .m-card h3 {
+    font-family: var(--serif); font-weight: 400; font-size: 18px; margin: 0;
+  }
+  .m-card .link { font-size: 10px; }
+
+  .m-bill { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px dashed var(--rule); }
+  .m-bill:first-of-type { border-top: none; }
+  .m-bill .day-chip { width: 38px; height: 38px; border-radius: 8px; }
+  .m-bill .day-chip .d { font-size: 15px; }
+  .m-bill .name { flex: 1; font-size: 13.5px; font-weight: 500; }
+  .m-bill .name .sub { display: block; color: var(--ink-3); font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; margin-top: 2px; }
+  .m-bill .amt { font-family: var(--serif); font-size: 17px; font-weight: 380; }
+
+  .m-budget { padding: 6px 0; }
+  .m-budget .top { display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px; }
+  .m-budget .top .v { font-family: var(--mono); color: var(--ink-3); font-size: 11px; letter-spacing: 0.04em; }
+  .m-budget .bar { height: 6px; background: #E5DCC2; border-radius: 999px; overflow: hidden; }
+  .m-budget .bar > span { display: block; height: 100%; border-radius: 999px; }
+  .m-budget + .m-budget { margin-top: 12px; }
+
+  /* tabbar */
+  .m-tabbar {
+    margin: 18px -22px 0;
+    padding: 14px 28px 36px;
+    background: #FBF6E7;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+  }
+  .m-tabbar a {
+    display: grid; place-items: center; gap: 4px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .m-tabbar a svg { width: 20px; height: 20px; }
+  .m-tabbar a.active { color: var(--ink); }
+  .m-tabbar .fab {
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: grid; place-items: center;
+    transform: translateY(-22px);
+    box-shadow: 0 12px 24px -10px rgba(184,74,42,0.6);
+  }
+  .m-tabbar .fab svg { width: 22px; height: 22px; color: #fff; }
+
+  .home-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--ink);
+    opacity: 0.6;
+  }
+
+  .back-link {
+    position: fixed; top: 20px; left: 20px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-2);
+    border: 1px solid var(--rule-2);
+    background: var(--paper-2);
+    padding: 8px 14px;
+    border-radius: 999px;
+    z-index: 20;
+  }
+</style>
+</head>
+<body data-page="mobile">
+
+<a class="back-link" href="index.html">&larr; Zur Übersicht</a>
+
+<div class="stage">
+
+  <div class="stage-head">
+    <span class="eyebrow">Bildschirm 06 &middot; iOS 390 &times; 844</span>
+    <h1>Der Pocket-<em>Begleiter.</em></h1>
+    <p>Ein Blick, dann weglegen. Reinvermögen, was reinkam, was rausging, die nächste fällige Rechnung und wie die Top-3-Töpfe laufen &mdash; mehr nicht.</p>
+  </div>
+
+  <div class="device">
+    <div class="screen">
+      <div class="notch"></div>
+
+      <div class="status">
+        <span>9:41</span>
+        <span class="right">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 16h2v4H2zM6 12h2v8H6zM10 8h2v12h-2zM14 4h2v16h-2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 10C7 4 17 4 22 10l-2 2c-4-4-12-4-16 0z"/><circle cx="12" cy="16" r="2"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="8" width="18" height="10" rx="2"/><rect x="3" y="9" width="14" height="8" fill="currentColor"/><path d="M21 11v4"/></svg>
+        </span>
+      </div>
+
+      <div class="m-main">
+        <div class="m-greet" data-today>—</div>
+        <div class="m-hi">
+          <div class="avatar" data-initials>?</div>
+          <h1><span data-greeting>Guten Tag</span>, <em data-bind="profile.firstName">—</em></h1>
+        </div>
+
+        <div class="m-hero">
+          <span class="label">Reinvermögen &middot; CHF</span>
+          <div class="v"><span data-bind="netWorth" data-fmt="num">0</span><span class="u"></span></div>
+          <div class="row" style="justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+            <span class="delta-pill" data-show-if="netWorth">steady</span>
+          </div>
+          <svg class="spark" viewBox="0 0 320 44" preserveAspectRatio="none">
+            <path d="M0 38 C 30 36, 60 30, 90 26 S 150 18, 180 14 S 240 12, 270 8 S 310 4, 320 2"
+                  fill="none" stroke="#F4EEDE" stroke-width="1.6"/>
+            <circle cx="320" cy="2" r="3" fill="#F4EEDE"/>
+          </svg>
+        </div>
+
+        <div class="m-row2">
+          <div class="m-tile">
+            <span class="label">Ein &middot; <span data-month></span></span>
+            <div class="v"><span data-bind="netMonthly" data-fmt="num">0</span></div>
+            <div class="card-sub" style="margin-top: 2px;">Lohn + Nebenverdienst</div>
+          </div>
+          <div class="m-tile">
+            <span class="label">Aus &middot; <span data-month></span></span>
+            <div class="v"><span data-bind="totalOut" data-fmt="num">0</span></div>
+            <div class="card-sub" style="margin-top: 2px;">fix + variabel</div>
+          </div>
+        </div>
+
+        <div class="m-card">
+          <div class="head">
+            <h3>Demnächst</h3>
+            <span class="card-sub">Anstehende Rechnungen</span>
+          </div>
+          <div data-list="mobile-bills"></div>
+        </div>
+
+        <div class="m-card">
+          <div class="head">
+            <h3>Diesen Monat</h3>
+            <span class="card-sub">Top-3-Töpfe</span>
+          </div>
+
+          <div data-list="mobile-budgets"></div>
+        </div>
+
+        <div class="m-tabbar">
+          <a class="active" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>
+            Start
+          </a>
+          <a href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            Auswertung
+          </a>
+          <a class="fab" href="#" aria-label="Beleg scannen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7V5h3M16 5h3v2M19 16v3h-3M8 19H5v-3"/><path d="M7 12h10"/></svg>
+          </a>
+          <a href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/></svg>
+            Rechnungen
+          </a>
+          <a href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .4 1.9l1 1A2 2 0 0 1 18 20.7l-1-1a1.7 1.7 0 0 0-1.9-.4 1.7 1.7 0 0 0-1.1 1.6V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.6 1.7 1.7 0 0 0-1.9.4l-1 1A2 2 0 0 1 3.3 18l1-1a1.7 1.7 0 0 0 .4-1.9 1.7 1.7 0 0 0-1.6-1.1H3a2 2 0 0 1 0-4h.1A1.7 1.7 0 0 0 4.7 9a1.7 1.7 0 0 0-.4-1.9l-1-1A2 2 0 1 1 6 3.3l1 1a1.7 1.7 0 0 0 1.9.4H9a1.7 1.7 0 0 0 1-1.6V3a2 2 0 0 1 4 0v.1A1.7 1.7 0 0 0 15 4.7a1.7 1.7 0 0 0 1.9-.4l1-1A2 2 0 1 1 20.7 6l-1 1a1.7 1.7 0 0 0-.4 1.9V9a1.7 1.7 0 0 0 1.6 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+            Einstellungen
+          </a>
+        </div>
+      </div>
+
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

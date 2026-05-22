@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Einkommen — Eni's Finances</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+</head>
+<body data-page="income">
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Eni&rsquo;s</span>
+    <span class="brand-ver">Finances</span>
+  </div>
+  <nav class="nav">
+    <a class="nav-item" href="index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>Übersicht</a>
+    <a class="nav-item active" href="income.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>Einkommen</a>
+    <a class="nav-item" href="bills.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Rechnungen</a>
+    <a class="nav-item" href="upload.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>Belege</a>
+    <a class="nav-item" href="summary.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abschluss</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="side-card"><span class="label">Abrechnungsperiode</span><div class="v" data-month>—</div></div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile Vorschau &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Alle Daten zurücksetzen</a>
+  <div class="user">
+    <div class="avatar" data-initials>?</div>
+    <div><div class="who"><span data-bind="profile.firstName">—</span></div><div class="where">Kanton <span data-bind="profile.kanton">—</span></div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Einkommen einrichten &middot; Live-Berechnung</span>
+      <h1 class="display">Dein <em>Einkommen</em>, in ganzen Sätzen.</h1>
+    </div>
+    <div class="top-actions">
+      <span class="bank-status" data-show-if="employment.employer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
+        Lokal gespeichert &middot; aktualisiert sich beim Tippen
+      </span>
+    </div>
+  </header>
+
+  <section class="grid-2" style="gap: 22px;">
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div><h2>Hauptanstellung</h2><div class="card-sub">Dein monatliches Bruttogehalt</div></div>
+          <span class="pill paid">aktiv</span>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <span class="label">Brutto monatlich</span>
+            <input data-field="employment.bruttoMonthly" data-numeric="true" inputmode="decimal"><span class="suffix">CHF</span>
+          </div>
+          <div class="field">
+            <span class="label">Arbeitgeber</span>
+            <input data-field="employment.employer">
+          </div>
+          <div class="field">
+            <span class="label">Zahltag</span>
+            <input data-field="employment.payday" data-numeric="true" inputmode="numeric">
+          </div>
+          <div class="field">
+            <span class="label">13. Monatslohn</span>
+            <select data-field="employment.thirteenth">
+              <option value="true">Ja &middot; pro rata im Dezember</option>
+              <option value="false">Nein</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div><h2>Nebenverdienst</h2><div class="card-sub">Optional &middot; wiederkehrende Nebenströme</div></div>
+        </div>
+        <div class="fields" style="grid-template-columns: 1fr 1fr;">
+          <div class="field">
+            <span class="label">Freelance / Beratung</span>
+            <input data-field="side.freelance" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+          <div class="field">
+            <span class="label">Dividenden</span>
+            <input data-field="side.dividends" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+          <div class="field">
+            <span class="label">Mieteinnahmen</span>
+            <input data-field="side.rental" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+          <div class="field">
+            <span class="label">Sonstiges</span>
+            <input data-field="side.other" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 10px;">
+          <div><h2>Steuern &amp; Vorsorge</h2><div class="card-sub">Kanton <span data-bind="profile.kanton">—</span> &middot; Steuerjahr 2026</div></div>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <span class="label">AHV / IV / EO / ALV</span>
+            <input data-field="taxes.ahvRate" data-numeric="true" inputmode="decimal"><span class="suffix">%</span>
+          </div>
+          <div class="field">
+            <span class="label">Effektiver Steuersatz</span>
+            <input data-field="taxes.taxRate" data-numeric="true" inputmode="decimal"><span class="suffix">%</span>
+          </div>
+          <div class="field">
+            <span class="label">Säule 3a</span>
+            <input data-field="taxes.saule3a" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+          <div class="field">
+            <span class="label">BVG (Pensionskasse)</span>
+            <input data-field="taxes.bvg" data-numeric="true" inputmode="decimal"><span class="suffix">CHF / Monat</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="calc">
+        <span class="label">Live-Berechnung</span>
+        <div class="h">Brutto &rarr; Netto</div>
+
+        <div class="line"><span>Brutto monatlich</span><span class="v" data-calc="brutto">0</span></div>
+        <div class="line sub"><span>&minus; AHV / IV / EO / ALV <span data-calc="ahv-rate-pct" style="opacity:0.7;"></span></span><span class="v" data-calc="ahv">0</span></div>
+        <div class="line sub"><span>&minus; BVG</span><span class="v" data-calc="bvg">0</span></div>
+        <div class="line add"><span>+ Nebenverdienst</span><span class="v" data-calc="side">0</span></div>
+
+        <div class="line total">
+          <span>Netto monatlich</span>
+          <span class="v" data-calc="net">0</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:14px; color:#BDB39C;">
+          <span>Jährlich</span><span class="v" style="font-size:18px;" data-calc="annual">0</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:6px; color:#BDB39C;">
+          <span>Steuern zur Seite legen &middot; <span data-calc="tax-rate-pct"></span></span>
+          <span class="v" style="font-size:18px;" data-calc="tax">0</span>
+        </div>
+        <div class="line" style="border-bottom:none; padding-top:6px; color:#BDB39C;">
+          <span>Säule 3a (separat)</span>
+          <span class="v" style="font-size:18px;" data-calc="3a">0</span>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="star"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 13.8 8.2 20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg></div>
+        <div>
+          <h4>Eine sanfte Empfehlung</h4>
+          <p>Das Maximum der Säule 3a 2026 beträgt <strong>CHF 7&rsquo;258/Jahr</strong> für BVG-Versicherte. Passe deinen monatlichen Beitrag oben an &mdash; das Dashboard rechnet sofort mit.</p>
+        </div>
+      </div>
+
+      <div class="note" style="background: var(--bg);">
+        <div class="star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m5 12 4 4 10-10"/></svg></div>
+        <div>
+          <h4>Wo das gespeichert wird</h4>
+          <p>Alle Eingaben bleiben in deinem Browser. <a href="#" data-action="reset" style="color: var(--accent);">Alle Daten zurücksetzen</a>, falls du neu anfangen willst.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

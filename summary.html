@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Abschluss — Eni's Finances</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+</head>
+<body data-page="summary">
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Eni&rsquo;s</span>
+    <span class="brand-ver">Finances</span>
+  </div>
+  <nav class="nav">
+    <a class="nav-item" href="index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>Übersicht</a>
+    <a class="nav-item" href="income.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>Einkommen</a>
+    <a class="nav-item" href="bills.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Rechnungen</a>
+    <a class="nav-item" href="upload.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>Belege</a>
+    <a class="nav-item active" href="summary.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abschluss</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="side-card"><span class="label">Abrechnungsperiode</span><div class="v" data-month>—</div></div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile Vorschau &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Alle Daten zurücksetzen</a>
+  <div class="user">
+    <div class="avatar" data-initials>?</div>
+    <div><div class="who"><span data-bind="profile.firstName">—</span></div><div class="where">Kanton <span data-bind="profile.kanton">—</span></div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Monatsabschluss</span>
+      <h1 class="display"><em data-month>Dieser Monat</em> im Rückblick</h1>
+    </div>
+    <div class="top-actions">
+      <a class="btn-ghost" href="summary-print.html" target="_blank" rel="noopener">Abschluss drucken</a>
+    </div>
+  </header>
+
+  <section class="hero" style="grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 28px; margin-bottom: 18px;">
+    <div class="col">
+      <span class="label">Gespart diesen Monat</span>
+      <div class="num-xl"><span data-bind="saved" data-fmt="num">0</span><span class="unit">CHF</span></div>
+      <div class="italic-s muted" style="margin-top: 12px;">&mdash; <em>deine Zahlen, live aktualisiert.</em></div>
+    </div>
+    <div class="col">
+      <span class="label">Ein</span>
+      <div class="num-l"><span data-bind="netMonthly" data-fmt="num">0</span></div>
+      <div class="italic-s muted" style="margin-top: 4px;">Lohn + Nebenverdienst</div>
+    </div>
+    <div class="col">
+      <span class="label">Aus</span>
+      <div class="num-l"><span data-bind="totalOut" data-fmt="num">0</span></div>
+      <div class="italic-s muted" style="margin-top: 4px;">fix + variabel</div>
+    </div>
+    <div class="col">
+      <span class="label">Rate</span>
+      <div class="num-l"><span data-bind="savingsRate">0</span>%</div>
+      <div class="italic-s muted" style="margin-top: 4px;">Sparquote</div>
+    </div>
+  </section>
+
+  <section class="grid-2" style="margin-bottom: 18px;">
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Einnahmen vs. Ausgaben</h2>
+          <div class="card-sub">letzte 6 Monate &middot; illustrativ</div>
+        </div>
+      </div>
+
+      <svg class="chart" viewBox="0 0 560 220" preserveAspectRatio="none" aria-label="Einnahmen vs Ausgaben">
+        <g stroke="#E5DCC2" stroke-width="1">
+          <line x1="0" y1="40"  x2="560" y2="40"/>
+          <line x1="0" y1="90"  x2="560" y2="90"/>
+          <line x1="0" y1="140" x2="560" y2="140"/>
+        </g>
+        <g>
+          <rect x="20"  y="44"  width="22" height="126" fill="#1A1815"/>
+          <rect x="48"  y="110" width="22" height="60"  fill="#C66A4E"/>
+          <rect x="110" y="40"  width="22" height="130" fill="#1A1815"/>
+          <rect x="138" y="104" width="22" height="66"  fill="#C66A4E"/>
+          <rect x="200" y="46"  width="22" height="124" fill="#1A1815"/>
+          <rect x="228" y="112" width="22" height="58"  fill="#C66A4E"/>
+          <rect x="290" y="42"  width="22" height="128" fill="#1A1815"/>
+          <rect x="318" y="98"  width="22" height="72"  fill="#C66A4E"/>
+          <rect x="380" y="46"  width="22" height="124" fill="#1A1815"/>
+          <rect x="408" y="116" width="22" height="54"  fill="#C66A4E"/>
+          <rect x="470" y="44"  width="22" height="126" fill="#1A1815"/>
+          <rect x="498" y="108" width="22" height="62"  fill="#C66A4E"/>
+        </g>
+        <line x1="0" y1="170" x2="560" y2="170" stroke="#C7BDA3" stroke-width="1"/>
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#8A8472" text-anchor="middle">
+          <text x="45"  y="200">Dez</text>
+          <text x="135" y="200">Jan</text>
+          <text x="225" y="200">Feb</text>
+          <text x="315" y="200">Mär</text>
+          <text x="405" y="200">Apr</text>
+          <text x="495" y="200">Mai</text>
+        </g>
+      </svg>
+      <div class="chart-legend">
+        <span><span class="swatch" style="background:#1A1815"></span>Einnahmen</span>
+        <span><span class="swatch" style="background:#C66A4E"></span>Ausgaben</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div>
+          <h2>Wohin es ging</h2>
+          <div class="card-sub">alle Kategorien</div>
+        </div>
+      </div>
+      <ul class="cats" data-list="categories"></ul>
+    </div>
+  </section>
+
+  <section class="insights">
+    <div class="insight good">
+      <div class="tag">Erfolg</div>
+      <h3>Lebensmittel-Budget im Blick</h3>
+      <p data-insight="achievement-body"></p>
+    </div>
+    <div class="insight warn">
+      <div class="tag">Restaurants</div>
+      <h3>Wie die Restaurant-Ausgaben laufen</h3>
+      <p data-insight="drift-body"></p>
+    </div>
+    <div class="insight alert">
+      <div class="tag">Hinweis</div>
+      <h3>Was als Nächstes kommt</h3>
+      <p>Du kannst Rechnungen, Budgets und Nebenverdienst jederzeit anpassen. Jede Änderung wird sofort in der Übersicht sichtbar.</p>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

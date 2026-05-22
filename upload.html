@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Belege — Eni's Finances</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Geist:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/atelier.css">
+<style>
+  .field-row {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .field-row:last-child { border-bottom: none; }
+  .field-row .v { font-family: var(--serif); font-size: 16px; font-weight: 380; }
+  .field-row .label { font-family: var(--mono); font-size:10.5px; color: var(--ink-3); letter-spacing: 0.16em; text-transform: uppercase; }
+  .thumb {
+    width: 220px;
+    aspect-ratio: 3 / 4;
+    border-radius: 12px;
+    background: #FFF8E8;
+    border: 1px solid var(--rule);
+    display: grid;
+    place-items: center;
+    color: var(--ink-3);
+    overflow: hidden;
+    flex: 0 0 220px;
+  }
+  .thumb .ph { text-align: center; padding: 18px; }
+  .thumb .ph svg { width: 36px; height: 36px; margin-bottom: 6px; color: var(--ink-3); }
+  .thumb .ph .file { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; word-break: break-all; }
+</style>
+</head>
+<body data-page="upload">
+<div class="app">
+
+<aside class="sidebar">
+  <div class="brand">
+    <span class="brand-name">Eni&rsquo;s</span>
+    <span class="brand-ver">Finances</span>
+  </div>
+  <nav class="nav">
+    <a class="nav-item" href="index.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/></svg>Übersicht</a>
+    <a class="nav-item" href="income.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 11h18"/></svg>Einkommen</a>
+    <a class="nav-item" href="bills.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Rechnungen</a>
+    <a class="nav-item active" href="upload.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>Belege</a>
+    <a class="nav-item" href="summary.html"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abschluss</a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="side-card"><span class="label">Abrechnungsperiode</span><div class="v" data-month>—</div></div>
+  <a class="link" href="mobile.html" style="padding: 4px 8px; display: block;">Mobile Vorschau &rarr;</a>
+  <a class="link" href="#" data-action="reset" style="padding: 4px 8px; display: block; color: var(--ink-3);">Alle Daten zurücksetzen</a>
+  <div class="user">
+    <div class="avatar" data-initials>?</div>
+    <div><div class="who"><span data-bind="profile.firstName">—</span></div><div class="where">Kanton <span data-bind="profile.kanton">—</span></div></div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <header class="topbar">
+    <div class="left">
+      <span class="eyebrow">Dokumenten-Eingang &middot; KI-gestütztes Erfassen</span>
+      <h1 class="display">Beleg ablegen. <em>Wir lesen ihn.</em></h1>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" aria-label="Suchen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="grid-2" style="gap: 22px;">
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="dropzone" data-up-dropzone>
+        <div class="file-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+          <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/></svg>
+          </div>
+        </div>
+        <div class="body">
+          <h2>Beleg hier ablegen</h2>
+          <p>PDF, JPG, PNG oder HEIC. Wir lesen Anbieter, Betrag und Datum &mdash; und legen den Beleg automatisch in das richtige Budget. Mehrseitige Rechnungen werden zusammengefügt.</p>
+          <div class="actions">
+            <button class="btn-primary" data-up-choose>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V5"/><path d="M7 10l5-5 5 5"/><path d="M5 20h14"/></svg>
+              Datei wählen
+            </button>
+            <button class="btn-ghost" disabled style="opacity:0.6; cursor: default;">Per Kamera</button>
+          </div>
+          <input data-up-input type="file" accept="application/pdf,image/*" style="display:none;">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head" style="margin-bottom: 4px;">
+          <div>
+            <h2>Aktuell gelesen</h2>
+            <div class="card-sub" data-up-filename>noch keine Datei</div>
+          </div>
+          <span class="pill reading" data-up-status>warte</span>
+        </div>
+
+        <div class="row" style="gap: 26px; align-items: flex-start; margin-top: 16px;">
+          <div class="thumb" data-up-thumb>
+            <div class="ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/></svg>
+              <div class="file">noch keine Vorschau</div>
+            </div>
+          </div>
+
+          <div style="flex: 1; min-width: 0;">
+            <div class="field-row" data-up-field="vendor">
+              <span class="label">Anbieter</span>
+              <div class="v">—</div>
+              <span class="conf"><span class="bar"><span style="width:0%"></span></span>0</span>
+            </div>
+            <div class="field-row" data-up-field="amount">
+              <span class="label">Betrag</span>
+              <div class="v">—</div>
+              <span class="conf"><span class="bar"><span style="width:0%"></span></span>0</span>
+            </div>
+            <div class="field-row" data-up-field="date">
+              <span class="label">Datum</span>
+              <div class="v">—</div>
+              <span class="conf"><span class="bar"><span style="width:0%"></span></span>0</span>
+            </div>
+            <div class="field-row" data-up-field="category">
+              <span class="label">Kategorie</span>
+              <div class="v">—</div>
+              <span class="conf"><span class="bar"><span style="width:0%"></span></span>0</span>
+            </div>
+            <div class="field-row" data-up-field="bucket">
+              <span class="label">Topf</span>
+              <div class="v">—</div>
+              <span class="conf"><span class="bar"><span style="width:0%"></span></span>0</span>
+            </div>
+
+            <div class="action-row">
+              <button class="btn-primary" data-action="confirm-tx">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>
+                Bestätigen &amp; ablegen
+              </button>
+              <button class="btn-ghost" data-action="edit-fields">Felder bearbeiten</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="stack" style="gap: 18px;">
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h2>Eingang</h2>
+            <div class="card-sub">Hochgeladene Dokumente dieser Sitzung</div>
+          </div>
+        </div>
+        <div data-up-inbox>
+          <div class="card-sub" style="padding: 10px 0;">Noch nichts hier &mdash; lege links eine Datei ab.</div>
+        </div>
+      </div>
+
+      <div class="note">
+        <div class="star">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 13.8 8.2 20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+        </div>
+        <div>
+          <h4>Wie wir lesen</h4>
+          <p>PDFs werden im Browser entpackt (kein Upload zu einem Server). Wir erkennen anhand des Texts typische Schweizer Anbieter (Helsana, Migros, SBB, EWZ, Salt, Holmes Place, …) und extrahieren Betrag und Datum.</p>
+        </div>
+      </div>
+
+      <div class="card" style="padding: 16px 20px;">
+        <div class="card-head" style="margin-bottom: 8px;">
+          <div>
+            <h2 style="font-size: 17px;">So funktioniert es</h2>
+            <div class="card-sub">Lesen &rarr; Abgleichen &rarr; Ablegen</div>
+          </div>
+        </div>
+        <ol style="margin: 6px 0 0; padding-left: 16px; font-size: 13px; color: var(--ink-2); line-height: 1.7;">
+          <li><strong>Lesen.</strong> Aus PDF/Bild ziehen wir Anbieter, Betrag und Datum.</li>
+          <li><strong>Abgleichen.</strong> Wir prüfen gegen deine fixen Rechnungen und letzten Ausgaben.</li>
+          <li><strong>Ablegen.</strong> Wiederkehrende Belege landen als Rechnung, einmalige als Transaktion.</li>
+        </ol>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+</div>
+
+<script src="assets/state.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
